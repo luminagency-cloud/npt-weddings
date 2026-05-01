@@ -40,110 +40,196 @@ export default async function VendorDetailPage({ params }: Props) {
   const primaryPhoto = photos.find((p) => p.is_primary) ?? photos[0] ?? null
 
   return (
-    <main className="max-w-3xl mx-auto px-4 py-12">
-      <nav className="text-sm text-neutral-500 mb-6">
-        <Link href="/wedding" className="hover:underline">Wedding Directory</Link>
-        {" / "}
-        <Link href={`/wedding/${vendor.category_slug}`} className="hover:underline">
-          {vendor.category_label}
-        </Link>
-        {" / "}
-        <span className="text-neutral-900">{vendor.name}</span>
-      </nav>
-      <div className="flex items-start justify-between gap-4 mb-6">
-        <div>
-          <div className="flex items-center gap-2 flex-wrap">
-            <h1 className="text-3xl font-bold tracking-tight text-neutral-900">
-              {vendor.name}
-            </h1>
-            {vendor.tier === "featured" && (
-              <span className="rounded-full bg-amber-100 px-2.5 py-0.5 text-xs font-semibold text-amber-800">
-                Featured
-              </span>
+    <div>
+      {/* Page header band */}
+      <section
+        className="py-10 px-4"
+        style={{ background: "linear-gradient(160deg, var(--primary) 0%, var(--primary-dark) 100%)" }}
+      >
+        <div className="max-w-4xl mx-auto">
+          <nav className="flex items-center gap-2 text-sm mb-4" style={{ color: "var(--gold-light)" }}>
+            <Link href="/wedding" className="hover:text-white transition-colors">Wedding Directory</Link>
+            <span className="opacity-40">/</span>
+            <Link href={`/wedding/${vendor.category_slug}`} className="hover:text-white transition-colors">
+              {vendor.category_label}
+            </Link>
+            <span className="opacity-40">/</span>
+            <span className="text-white/90">{vendor.name}</span>
+          </nav>
+          <div className="flex items-start justify-between gap-4">
+            <div>
+              <div className="flex items-center gap-3 flex-wrap">
+                <h1
+                  className="text-3xl sm:text-4xl font-bold text-white"
+                  style={{ fontFamily: "var(--font-playfair)" }}
+                >
+                  {vendor.name}
+                </h1>
+                {vendor.tier === "featured" && (
+                  <span
+                    className="rounded-full px-3 py-0.5 text-xs font-semibold"
+                    style={{ background: "#fdf3d8", color: "#8a6a0a" }}
+                  >
+                    Featured
+                  </span>
+                )}
+                {vendor.verified && (
+                  <span className="rounded-full bg-green-100 px-3 py-0.5 text-xs font-semibold text-green-800">
+                    Verified
+                  </span>
+                )}
+              </div>
+              {promoActive && (
+                <p className="mt-2 text-sm font-medium text-rose-300">{vendor.promo_label}</p>
+              )}
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <div
+        className="h-px"
+        style={{ background: "linear-gradient(to right, transparent, var(--gold), var(--gold-light), var(--gold), transparent)" }}
+      />
+
+      <main className="max-w-4xl mx-auto px-4 py-10">
+        {primaryPhoto && (
+          <div className="mb-8 rounded-2xl overflow-hidden bg-neutral-100 aspect-video shadow-sm">
+            <img
+              src={primaryPhoto.r2_url}
+              alt={primaryPhoto.alt_text ?? vendor.name}
+              className="w-full h-full object-cover"
+            />
+          </div>
+        )}
+
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-8 mb-10">
+          <div
+            className="flex flex-col gap-4 text-sm rounded-2xl p-6"
+            style={{ background: "var(--card-bg)", border: "1px solid var(--border)" }}
+          >
+            <p
+              className="text-xs font-semibold tracking-widest uppercase mb-1"
+              style={{ color: "var(--gold)" }}
+            >
+              Contact &amp; Location
+            </p>
+            {vendor.address && (
+              <div>
+                <p className="font-medium text-neutral-800 mb-0.5">Address</p>
+                <p className="text-neutral-500">
+                  {vendor.address}, {vendor.city}, {vendor.state} {vendor.zip}
+                </p>
+              </div>
             )}
-            {vendor.verified && (
-              <span className="rounded-full bg-green-100 px-2.5 py-0.5 text-xs font-semibold text-green-800">
-                Verified
-              </span>
+            {vendor.phone && (
+              <div>
+                <p className="font-medium text-neutral-800 mb-0.5">Phone</p>
+                <a href={`tel:${vendor.phone}`} className="text-neutral-500 hover:underline">
+                  {vendor.phone}
+                </a>
+              </div>
+            )}
+            {vendor.website && (
+              <div>
+                <p className="font-medium text-neutral-800 mb-0.5">Website</p>
+                <a
+                  href={vendor.website}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="hover:underline break-all"
+                  style={{ color: "var(--primary)" }}
+                >
+                  {vendor.website.replace(/^https?:\/\//, "")}
+                </a>
+              </div>
             )}
           </div>
-          {promoActive && (
-            <p className="mt-1 text-sm font-medium text-rose-600">{vendor.promo_label}</p>
+
+          {tags.length > 0 && (
+            <div
+              className="rounded-2xl p-6"
+              style={{ background: "var(--card-bg)", border: "1px solid var(--border)" }}
+            >
+              <p
+                className="text-xs font-semibold tracking-widest uppercase mb-4"
+                style={{ color: "var(--gold)" }}
+              >
+                Specialties
+              </p>
+              <div className="flex flex-wrap gap-2">
+                {tags.map((tag) => (
+                  <span
+                    key={tag.id}
+                    className="rounded-full px-3 py-1 text-xs text-neutral-600"
+                    style={{ background: "var(--background)", border: "1px solid var(--border)" }}
+                  >
+                    {tag.label}
+                  </span>
+                ))}
+              </div>
+            </div>
           )}
         </div>
-      </div>
-      {primaryPhoto && (
-        <div className="mb-6 rounded-xl overflow-hidden bg-neutral-100 aspect-video">
-          <img src={primaryPhoto.r2_url} alt={primaryPhoto.alt_text ?? vendor.name} className="w-full h-full object-cover" />
-        </div>
-      )}
-      <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 mb-8">
-        <div className="flex flex-col gap-2 text-sm text-neutral-600">
-          {vendor.address && (
-            <p>
-              <span className="font-medium text-neutral-900">Address</span><br />
-              {vendor.address}, {vendor.city}, {vendor.state} {vendor.zip}
-            </p>
-          )}
-          {vendor.phone && (
-            <p>
-              <span className="font-medium text-neutral-900">Phone</span><br />
-              <a href={`tel:${vendor.phone}`} className="hover:underline">{vendor.phone}</a>
-            </p>
-          )}
-          {vendor.website && (
-            <p>
-              <span className="font-medium text-neutral-900">Website</span><br />
-              <a href={vendor.website} target="_blank" rel="noopener noreferrer" className="hover:underline break-all">
-                {vendor.website.replace(/^https?:\/\//, "")}
-              </a>
-            </p>
-          )}
-        </div>
-        {tags.length > 0 && (
-          <div>
-            <p className="text-sm font-medium text-neutral-900 mb-2">Tags</p>
-            <div className="flex flex-wrap gap-1.5">
-              {tags.map((tag) => (
-                <span key={tag.id} className="rounded-full bg-neutral-100 px-2.5 py-0.5 text-xs text-neutral-600">
-                  {tag.label}
-                </span>
+
+        {description && (
+          <div className="mb-10">
+            <h2
+              className="text-xl font-semibold mb-3"
+              style={{ fontFamily: "var(--font-playfair)", color: "var(--primary)" }}
+            >
+              About {vendor.name}
+            </h2>
+            <p className="text-neutral-600 leading-relaxed">{description}</p>
+          </div>
+        )}
+
+        {photos.length > 1 && (
+          <div className="mb-10">
+            <h2
+              className="text-xl font-semibold mb-4"
+              style={{ fontFamily: "var(--font-playfair)", color: "var(--primary)" }}
+            >
+              Gallery
+            </h2>
+            <div className="grid grid-cols-2 sm:grid-cols-3 gap-3">
+              {photos.map((photo) => (
+                <div key={photo.id} className="rounded-xl overflow-hidden bg-neutral-100 aspect-square">
+                  <img
+                    src={photo.r2_url}
+                    alt={photo.alt_text ?? vendor.name}
+                    className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
+                  />
+                </div>
               ))}
             </div>
           </div>
         )}
-      </div>
-      {description && (
-        <div className="prose prose-neutral max-w-none mb-8">
-          <p>{description}</p>
-        </div>
-      )}
-      {photos.length > 1 && (
-        <div className="mb-8">
-          <h2 className="text-lg font-semibold mb-3">Photos</h2>
-          <div className="grid grid-cols-2 sm:grid-cols-3 gap-3">
-            {photos.map((photo) => (
-              <div key={photo.id} className="rounded-lg overflow-hidden bg-neutral-100 aspect-square">
-                <img src={photo.r2_url} alt={photo.alt_text ?? vendor.name} className="w-full h-full object-cover" />
-              </div>
-            ))}
-          </div>
-        </div>
-      )}
-      {!vendor.claimed && (
-        <div className="rounded-xl border border-neutral-200 bg-neutral-50 p-6">
-          <h2 className="font-semibold text-neutral-900 mb-1">Is this your business?</h2>
-          <p className="text-sm text-neutral-600 mb-4">
-            Claim this listing to add photos, update your description, and get priority placement.
-          </p>
-          <Link
-            href={`/claim/${vendor.slug}`}
-            className="inline-flex items-center rounded-lg bg-neutral-900 px-4 py-2 text-sm font-medium text-white hover:bg-neutral-700 transition-colors"
+
+        {!vendor.claimed && (
+          <div
+            className="rounded-2xl p-8 text-center"
+            style={{ background: "var(--card-bg)", border: "1px solid var(--border)" }}
           >
-            Claim &amp; Upgrade This Listing
-          </Link>
-        </div>
-      )}
-    </main>
+            <p
+              className="text-lg font-semibold mb-1"
+              style={{ fontFamily: "var(--font-playfair)", color: "var(--primary)" }}
+            >
+              Is this your business?
+            </p>
+            <p className="text-sm text-neutral-500 mb-5">
+              Claim this listing to add photos, update your description, and get priority placement.
+            </p>
+            <Link
+              href={`/claim/${vendor.slug}`}
+              className="inline-flex items-center rounded-full px-6 py-2.5 text-sm font-medium text-white transition-opacity hover:opacity-90"
+              style={{ background: "var(--primary)" }}
+            >
+              Claim &amp; Upgrade This Listing
+            </Link>
+          </div>
+        )}
+      </main>
+    </div>
   )
 }

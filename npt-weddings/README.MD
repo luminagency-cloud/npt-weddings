@@ -1,57 +1,36 @@
-# Newport Wedding Directory
+This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
 
-A programmatic SEO directory of wedding vendors in Newport County, Rhode Island. Built on Next.js with dynamic routing, ISR caching, and a Neon PostgreSQL backend.
+## Getting Started
 
-## What it is
+First, run the development server:
 
-A public-facing vendor directory with three listing tiers (basic, paid, featured), vendor claim/upgrade flow via Stripe, and photo hosting via Cloudflare R2. Pages are generated dynamically from the database and cached at the edge via Vercel ISR.
-
-## Tech Stack
-
-| Layer | Tool |
-|---|---|
-| Framework | Next.js (App Router) |
-| Database | Neon (PostgreSQL) |
-| Auth | Clerk |
-| Hosting | Vercel |
-| Image Storage | Cloudflare R2 |
-| Payments | Stripe |
-
-## Project Structure
-
-```
-/app
-  /wedding
-    page.tsx                        # Directory home
-    /[category]
-      page.tsx                      # Category listing (e.g. /wedding/jewelers)
-      /[vendor]
-        page.tsx                    # Vendor detail page
-  /admin
-    page.tsx                        # Clerk-protected admin
-  /claim
-    /[vendor]
-      page.tsx                      # Claim + upgrade flow
-/lib
-  db.ts                             # Neon client
-  r2.ts                             # Cloudflare R2 client
-  revalidate.ts                     # revalidatePath helpers
-/app
-  sitemap.ts                        # Dynamic sitemap from DB
+```bash
+npm run dev
+# or
+yarn dev
+# or
+pnpm dev
+# or
+bun dev
 ```
 
-## Listing Tiers
+Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-| Tier | Price | Features |
-|---|---|---|
-| Basic | Free | Seeded data, not claimed |
-| Paid | TBD | Claimed, enriched content, photos |
-| Featured | TBD | Paid + priority placement in listings |
+You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
 
-## Dev Notes
+This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
 
-- Vendor claim requires Stripe payment — no free claim flow
-- Cache revalidation fires automatically on any DB write
-- Images stored in R2, URLs stored in DB — never on Vercel
-- Sitemap is generated from the DB, reflects only active vendors
-- Admin UI is minimal — most data entry via Neon console during early build
+## Learn More
+
+To learn more about Next.js, take a look at the following resources:
+
+- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
+- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+
+You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+
+## Deploy on Vercel
+
+The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+
+Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.

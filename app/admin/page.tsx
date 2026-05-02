@@ -11,6 +11,13 @@ export default async function AdminPage() {
       </div>
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
         <Link
+          href="/admin/categories"
+          className="block rounded-xl border border-neutral-200 p-5 hover:border-neutral-400 transition-all"
+        >
+          <h2 className="font-semibold text-neutral-900">Manage Categories</h2>
+          <p className="text-sm text-neutral-500 mt-1">Edit category names, copy, order, and visibility</p>
+        </Link>
+        <Link
           href="/admin/vendors"
           className="block rounded-xl border border-neutral-200 p-5 hover:border-neutral-400 transition-all"
         >

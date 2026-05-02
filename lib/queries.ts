@@ -126,6 +126,56 @@ export async function getVendorById(id: string): Promise<Vendor | null> {
   return (rows[0] as Vendor) ?? null
 }
 
+export async function getAdminCategories() {
+  const rows = await db`
+    SELECT
+      c.*,
+      COUNT(v.id)::int AS vendor_count
+    FROM categories c
+    LEFT JOIN vendors v ON v.category_id = c.id AND v.active = true
+    GROUP BY c.id
+    ORDER BY c.sort_order ASC, c.label ASC
+  `
+
+  return rows as Category[]
+}
+
+export async function getCategoryById(id: string): Promise<Category | null> {
+  const rows = await db`
+    SELECT
+      c.*,
+      COUNT(v.id)::int AS vendor_count
+    FROM categories c
+    LEFT JOIN vendors v ON v.category_id = c.id AND v.active = true
+    WHERE c.id = ${id}
+    GROUP BY c.id
+  `
+
+  return (rows[0] as Category) ?? null
+}
+
+type UpdateCategoryInput = {
+  id: string
+  slug: string
+  label: string
+  description: string | null
+  sort_order: number
+  active: boolean
+}
+
+export async function updateCategory(input: UpdateCategoryInput) {
+  await db`
+    UPDATE categories
+    SET
+      slug = ${input.slug},
+      label = ${input.label},
+      description = ${input.description},
+      sort_order = ${input.sort_order},
+      active = ${input.active}
+    WHERE id = ${input.id}
+  `
+}
+
 type UpdateVendorInput = {
   id: string
   category_id: string

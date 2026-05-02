@@ -37,7 +37,7 @@ export default function NewportGuidePage() {
         <p className="mt-6 text-lg leading-8 text-[var(--color-muted)]">
           Newport is appealing for obvious reasons, but the practical side matters
           just as much: timing, guest movement, seasonal tradeoffs, and how the
-          town changes the shape of the weekend.
+          town changes the cost and pace of the weekend.
         </p>
       </div>
       <div className="mt-12 grid gap-4 md:grid-cols-3">

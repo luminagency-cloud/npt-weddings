@@ -28,7 +28,7 @@ export default function AboutPage() {
         </p>
         <p>
           That is why the first version stays narrow, curated, and useful instead
-          of pretending to be complete before it is ready.
+          of pretending to be comprehensive before it earns that right.
         </p>
       </div>
     </div>

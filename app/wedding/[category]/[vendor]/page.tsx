@@ -1,7 +1,11 @@
 import type { Metadata } from "next"
 import { notFound } from "next/navigation"
 import Link from "next/link"
-import { getVendorBySlug, getVendorPhotos, getVendorTags } from "@/lib/queries"
+import {
+  getVendorByCategoryAndSlug,
+  getVendorPhotos,
+  getVendorTags,
+} from "@/lib/queries"
 
 export const revalidate = 3600
 
@@ -10,8 +14,8 @@ type Props = {
 }
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
-  const { vendor: vendorSlug } = await params
-  const vendor = await getVendorBySlug(vendorSlug)
+  const { category, vendor: vendorSlug } = await params
+  const vendor = await getVendorByCategoryAndSlug(category, vendorSlug)
   if (!vendor) return {}
   const title = vendor.meta_title ?? `${vendor.name} | Newport, RI`
   const description =
@@ -23,14 +27,15 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 }
 
 export default async function VendorDetailPage({ params }: Props) {
-  const { vendor: vendorSlug } = await params
-  const [vendor, photos, tags] = await Promise.all([
-    getVendorBySlug(vendorSlug),
-    getVendorPhotos(vendorSlug).catch(() => []),
-    getVendorTags(vendorSlug).catch(() => []),
-  ])
+  const { category, vendor: vendorSlug } = await params
+  const vendor = await getVendorByCategoryAndSlug(category, vendorSlug)
 
   if (!vendor) notFound()
+
+  const [photos, tags] = await Promise.all([
+    getVendorPhotos(vendor.id).catch(() => []),
+    getVendorTags(vendor.id).catch(() => []),
+  ])
 
   const description = vendor.description_override ?? vendor.description ?? null
   const promoActive =
@@ -82,6 +87,11 @@ export default async function VendorDetailPage({ params }: Props) {
               {promoActive && (
                 <p className="mt-2 text-sm font-medium text-rose-300">{vendor.promo_label}</p>
               )}
+              <p className="mt-3 max-w-2xl text-sm leading-6 text-white/70">
+                A Newport-area {vendor.category_label?.toLowerCase() ?? "wedding vendor"} listing
+                for couples who already have a clearer sense of venue, timing,
+                and guest experience priorities.
+              </p>
             </div>
           </div>
         </div>
@@ -113,6 +123,10 @@ export default async function VendorDetailPage({ params }: Props) {
               style={{ color: "var(--gold)" }}
             >
               Contact &amp; Location
+            </p>
+            <p className="text-xs leading-5 text-neutral-500">
+              Use this section to sanity-check convenience and fit before you
+              start outreach.
             </p>
             {vendor.address && (
               <div>
@@ -183,6 +197,33 @@ export default async function VendorDetailPage({ params }: Props) {
             <p className="text-neutral-600 leading-relaxed">{description}</p>
           </div>
         )}
+
+        <div
+          className="mb-10 grid gap-4 rounded-2xl p-6 md:grid-cols-[1.2fr_0.8fr]"
+          style={{ background: "var(--background)", border: "1px solid var(--border)" }}
+        >
+          <div>
+            <p
+              className="text-xs font-semibold uppercase tracking-[0.22em]"
+              style={{ color: "var(--gold)" }}
+            >
+              Shortlist check
+            </p>
+            <p className="mt-3 text-sm leading-6 text-neutral-600">
+              Before reaching out, compare this listing against venue fit,
+              guest logistics, and the overall tone you want for the weekend.
+            </p>
+          </div>
+          <div className="flex items-center">
+            <Link
+              href={`/wedding/${vendor.category_slug}`}
+              className="text-sm font-medium hover:underline"
+              style={{ color: "var(--primary)" }}
+            >
+              Back to all {vendor.category_label?.toLowerCase()} →
+            </Link>
+          </div>
+        </div>
 
         {photos.length > 1 && (
           <div className="mb-10">

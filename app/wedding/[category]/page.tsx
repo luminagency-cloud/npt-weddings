@@ -62,6 +62,11 @@ export default async function CategoryPage({ params }: Props) {
           {category.description && (
             <p className="mt-2 max-w-xl text-white/70">{category.description}</p>
           )}
+          <div className="mt-5 flex flex-wrap items-center gap-3 text-xs uppercase tracking-[0.2em] text-white/70">
+            <span>{vendors.length} {vendors.length === 1 ? "listing" : "listings"}</span>
+            <span className="opacity-30">•</span>
+            <span>{featured.length} featured</span>
+          </div>
         </div>
       </section>
 
@@ -71,6 +76,32 @@ export default async function CategoryPage({ params }: Props) {
       />
 
       <section className="mx-auto max-w-6xl px-4 py-12 sm:px-6">
+        <div className="mb-8 grid gap-4 rounded-[1.75rem] bg-white p-6 md:grid-cols-[1.2fr_0.8fr]" style={{ border: "1px solid var(--border)" }}>
+          <div>
+            <p className="text-xs font-semibold uppercase tracking-[0.22em]" style={{ color: "var(--gold)" }}>
+              How to use this page
+            </p>
+            <p className="mt-3 text-sm leading-6 text-neutral-600">
+              Treat this as a narrowed working list, not a final answer. Start by
+              shortlisting the few businesses that match your venue style, guest
+              count, and overall weekend tone.
+            </p>
+          </div>
+          <div className="flex flex-col justify-between gap-4 rounded-[1.25rem] bg-[var(--background)] p-5">
+            <p className="text-sm leading-6 text-neutral-600">
+              If you are still early in planning, venue decisions usually matter
+              more than adding more vendors to the shortlist.
+            </p>
+            <Link
+              href="/planning/venues"
+              className="inline-flex text-sm font-medium hover:underline"
+              style={{ color: "var(--primary)" }}
+            >
+              Read the venue planning guide →
+            </Link>
+          </div>
+        </div>
+
         {vendors.length === 0 ? (
           <div className="py-20 text-center">
             <p className="text-lg text-neutral-400">No vendors listed in this category yet.</p>

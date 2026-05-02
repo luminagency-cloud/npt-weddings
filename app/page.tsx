@@ -11,19 +11,19 @@ const planningHighlights = [
   {
     title: "Start With Venues",
     description:
-      "Begin with setting, season, and guest count before you start contacting everyone else.",
+      "Start with the setting, season, and guest-count reality that will shape everything else.",
     href: "/planning/venues",
   },
   {
     title: "Build Your Timeline",
     description:
-      "Use a practical sequence for venue, planner, photography, catering, beauty, and rentals.",
+      "Use a practical order of operations for venue, planner, photography, food, beauty, and rentals.",
     href: "/planning",
   },
   {
     title: "Browse Vendors",
     description:
-      "Explore a curated local directory without burying the useful planning context.",
+      "Use the directory once your priorities are clearer, instead of treating it like the first step.",
     href: "/wedding",
   },
 ]
@@ -46,11 +46,11 @@ export default function Home() {
               Newport, Rhode Island
             </p>
             <h1 className="mt-5 max-w-3xl text-5xl font-semibold tracking-[-0.04em] text-[var(--color-ink)] sm:text-6xl">
-              Wedding planning with local taste, not directory fluff.
+              A better starting point for Newport wedding planning.
             </h1>
             <p className="mt-6 max-w-2xl text-lg leading-8 text-[var(--color-muted)] sm:text-xl">
-              Find the right Newport venues, map out your weekend, and browse a
-              curated set of vendors without sorting through filler.
+              Sort out venues, timing, guest flow, and the shape of the weekend
+              before you get buried in a thousand vendor tabs.
             </p>
             <div className="mt-8 flex flex-col gap-3 sm:flex-row">
               <Link
@@ -75,15 +75,15 @@ export default function Home() {
               <ol className="mt-4 space-y-4 text-sm leading-6 text-[var(--color-muted)]">
                 <li>
                   <span className="font-semibold text-[var(--color-ink)]">1.</span>{" "}
-                  Choose the kind of Newport wedding you actually want.
+                  Decide what kind of Newport weekend you are actually trying to host.
                 </li>
                 <li>
                   <span className="font-semibold text-[var(--color-ink)]">2.</span>{" "}
-                  Narrow your venue style before building the rest of the list.
+                  Narrow venue style and guest-count range before building a vendor list.
                 </li>
                 <li>
                   <span className="font-semibold text-[var(--color-ink)]">3.</span>{" "}
-                  Use the directory once you have a sharper point of view.
+                  Use the directory after the big decisions start getting clearer.
                 </li>
               </ol>
             </div>
@@ -168,15 +168,15 @@ export default function Home() {
             <div className="rounded-[1.75rem] bg-[var(--color-cream-strong)] p-6">
               <h3 className="text-lg font-semibold">Venue choice drives everything</h3>
               <p className="mt-3 text-sm leading-6 text-[var(--color-muted)]">
-                In Newport, style, traffic, lodging, and guest flow usually get set
-                by the venue before the rest of the planning decisions follow.
+                In Newport, venue choice usually sets the budget pressure, guest flow,
+                transport friction, and the overall feel before the rest follows.
               </p>
             </div>
             <div className="rounded-[1.75rem] bg-[var(--color-cream-strong)] p-6">
               <h3 className="text-lg font-semibold">Curated beats exhaustive</h3>
               <p className="mt-3 text-sm leading-6 text-[var(--color-muted)]">
-                The point is not to dump every listing on the page. It is to make
-                the early decisions easier and the later searches cleaner.
+                The goal is not to dump every listing on one page. The goal is to
+                make the first decisions better and the later search cleaner.
               </p>
             </div>
           </div>

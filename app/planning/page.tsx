@@ -17,13 +17,13 @@ const planningPages = [
   {
     title: "Wedding Timeline",
     description:
-      "A simple sequence for how couples should think about venue, vendors, guest flow, and key deadlines.",
+      "A practical order for venue, vendors, guest flow, and the deadlines that actually matter.",
     href: "#timeline",
   },
   {
     title: "Budget Mindset",
     description:
-      "A practical view of how venue choices affect catering, rentals, staffing, and guest logistics in Newport.",
+      "A plain-English view of how venue choices affect food, rentals, staffing, and logistics in Newport.",
     href: "#budget",
   },
 ]
@@ -36,12 +36,12 @@ export default function PlanningPage() {
           Planning
         </p>
         <h1 className="mt-4 text-5xl font-semibold tracking-[-0.04em]">
-          Start with the decisions that actually shape the wedding.
+          Start with the decisions that actually shape the weekend.
         </h1>
         <p className="mt-6 text-lg leading-8 text-[var(--color-muted)]">
-          The point of this section is to make the early planning choices clearer:
-          venue style, time of year, guest logistics, and the budget tradeoffs
-          that follow from them.
+          The point of this section is to make the early planning choices
+          clearer: venue style, time of year, guest logistics, and the budget
+          tradeoffs that follow from those choices.
         </p>
       </div>
 
@@ -67,11 +67,11 @@ export default function PlanningPage() {
           </h2>
         </div>
         <ol className="space-y-5 text-sm leading-6 text-[var(--color-muted)]">
-          <li>1. Pick the type of Newport wedding you want before you pick vendors.</li>
-          <li>2. Set guest count range and budget guardrails early.</li>
-          <li>3. Shortlist venues before diving into stylistic details.</li>
-          <li>4. Once the venue is set, lock planner, photography, and food priorities.</li>
-          <li>5. Use the directory to fill needs, not to define the whole event.</li>
+          <li>1. Pick the kind of Newport weekend you want before browsing vendors too hard.</li>
+          <li>2. Set a real guest-count range and budget guardrails early.</li>
+          <li>3. Shortlist venues before getting lost in stylistic details.</li>
+          <li>4. Once the venue is clearer, lock planning, photography, and food priorities.</li>
+          <li>5. Use the directory to fill gaps, not to define the event from scratch.</li>
         </ol>
       </section>
 
@@ -82,10 +82,10 @@ export default function PlanningPage() {
           </h2>
         </div>
         <p className="text-sm leading-7 text-[var(--color-muted)]">
-          In Newport, the venue format often determines the rest of the budget.
-          A full-service property, a private estate, and a waterfront location can
-          all support beautiful weddings, but they create very different staffing,
-          transportation, rental, and guest-flow requirements. Start there.
+          In Newport, venue format often determines the rest of the budget. A
+          full-service property, a private estate, and a waterfront setup can
+          all produce a strong wedding, but they create very different staffing,
+          rental, transport, and guest-flow requirements. Start there.
         </p>
       </section>
     </div>

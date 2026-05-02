@@ -24,6 +24,11 @@ const CATEGORY_ICONS: Record<string, string> = {
 
 export default async function WeddingDirectoryPage() {
   const categories = await getCategories()
+  const liveCategories = categories.filter((category) => (category.vendor_count ?? 0) > 0)
+  const totalVendors = liveCategories.reduce(
+    (sum, category) => sum + (category.vendor_count ?? 0),
+    0
+  )
 
   return (
     <div>
@@ -55,13 +60,20 @@ export default async function WeddingDirectoryPage() {
             className="mb-5 text-5xl font-bold leading-tight sm:text-6xl"
             style={{ fontFamily: "var(--font-playfair)" }}
           >
-            Find Your Perfect
+            A tighter Newport
             <br />
-            <span style={{ color: "var(--gold-light)" }}>Wedding Vendors</span>
+            <span style={{ color: "var(--gold-light)" }}>wedding directory</span>
           </h1>
           <p className="mx-auto max-w-xl text-lg" style={{ color: "rgba(255,255,255,0.72)" }}>
-            From intimate gatherings in historic mansions to grand celebrations by the sea, discover Newport&rsquo;s finest.
+            Browse the categories that actually matter, then move into planning
+            with a clearer point of view on venues, guest experience, and the
+            kind of weekend you want to build.
           </p>
+          <div className="mt-8 flex flex-wrap items-center justify-center gap-3 text-xs uppercase tracking-[0.22em] text-white/70">
+            <span>{liveCategories.length} live categories</span>
+            <span className="opacity-30">•</span>
+            <span>{totalVendors} listed vendors</span>
+          </div>
         </div>
       </section>
 
@@ -79,12 +91,12 @@ export default async function WeddingDirectoryPage() {
             Browse by Category
           </h2>
           <p className="text-sm text-neutral-500">
-            Everything you need for your Newport wedding, in one place
+            Focus on the categories with enough real depth to be useful.
           </p>
         </div>
 
         <div className="grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-4">
-          {categories.map((cat) => (
+          {liveCategories.map((cat) => (
             <Link
               key={cat.id}
               href={`/wedding/${cat.slug}`}
@@ -108,8 +120,11 @@ export default async function WeddingDirectoryPage() {
                   {cat.description}
                 </p>
               )}
+              <span className="mt-3 text-[0.65rem] font-semibold uppercase tracking-[0.2em] text-neutral-400">
+                {cat.vendor_count} {cat.vendor_count === 1 ? "listing" : "listings"}
+              </span>
               <span
-                className="mt-3 text-xs font-medium opacity-0 transition-opacity group-hover:opacity-100"
+                className="mt-2 text-xs font-medium opacity-0 transition-opacity group-hover:opacity-100"
                 style={{ color: "var(--gold)" }}
               >
                 Browse →
@@ -130,7 +145,8 @@ export default async function WeddingDirectoryPage() {
           Need help narrowing your options?
         </p>
         <p className="mb-5 text-sm text-neutral-500">
-          Start with venues, timing, and guest experience before diving into every category.
+          Start with venues, timing, and guest experience before treating the
+          directory like a giant checklist.
         </p>
         <Link
           href="/planning"

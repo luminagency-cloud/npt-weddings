@@ -3,7 +3,7 @@ import type { Metadata } from "next"
 export const metadata: Metadata = {
   title: "About",
   description:
-    "About Newport Weddings and the couple-first approach behind the site.",
+    "About Newport Weddings and the couple-first point of view behind the site.",
 }
 
 export default function AboutPage() {
@@ -13,13 +13,13 @@ export default function AboutPage() {
         About
       </p>
       <h1 className="mt-4 text-5xl font-semibold tracking-[-0.04em]">
-        A couple-first wedding site for Newport.
+        A couple-first wedding site for one of the country’s marquee wedding destinations.
       </h1>
       <div className="mt-8 space-y-6 text-base leading-8 text-[var(--color-muted)]">
         <p>
           Newport Weddings is being built as a better starting point for couples
-          planning weddings in Newport, Rhode Island. The goal is not to create a
-          bloated vendor marketplace on day one.
+          planning weddings in Newport, Rhode Island. The goal is not to launch
+          a bloated marketplace and call it a planning resource.
         </p>
         <p>
           The goal is to make the early planning decisions easier: venue style,

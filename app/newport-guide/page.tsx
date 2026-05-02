@@ -3,19 +3,19 @@ import type { Metadata } from "next"
 export const metadata: Metadata = {
   title: "Newport Wedding Guide",
   description:
-    "Local Newport wedding guidance on timing, guest experience, and how to shape a strong weekend.",
+    "Local Newport wedding guidance on timing, guest experience, and how to shape a strong weekend in one of the country’s top wedding destinations.",
 }
 
 const guideTopics = [
   {
     title: "Best time of year",
     description:
-      "Season changes everything here: pricing, crowding, weather exposure, and what kind of event feels natural.",
+      "Season changes everything here: pricing, crowding, weather exposure, and what type of wedding feels natural.",
   },
   {
     title: "Guest experience",
     description:
-      "Newport works best when the wedding feels like a coherent weekend rather than a series of disconnected reservations.",
+      "Newport works best when the wedding feels like a coherent weekend rather than a set of disconnected reservations.",
   },
   {
     title: "Weekend flow",
@@ -32,7 +32,7 @@ export default function NewportGuidePage() {
           Newport Guide
         </p>
         <h1 className="mt-4 text-5xl font-semibold tracking-[-0.04em]">
-          Local context that should inform the wedding before you start booking around it.
+          Newport has prestige. It also has logistics, seasonality, and tradeoffs.
         </h1>
         <p className="mt-6 text-lg leading-8 text-[var(--color-muted)]">
           Newport is appealing for obvious reasons, but the practical side matters

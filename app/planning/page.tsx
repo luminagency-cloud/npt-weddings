@@ -4,7 +4,7 @@ import Link from "next/link"
 export const metadata: Metadata = {
   title: "Wedding Planning",
   description:
-    "Practical Newport wedding planning guidance for venue selection, timing, and budget decisions.",
+    "Practical Newport wedding planning guidance for venues, timing, guest experience, and budget decisions.",
 }
 
 const planningPages = [
@@ -36,7 +36,7 @@ export default function PlanningPage() {
           Planning
         </p>
         <h1 className="mt-4 text-5xl font-semibold tracking-[-0.04em]">
-          Start with the decisions that actually shape the weekend.
+          The best Newport weddings are shaped by a few decisions made well.
         </h1>
         <p className="mt-6 text-lg leading-8 text-[var(--color-muted)]">
           The point of this section is to make the early planning choices
@@ -67,11 +67,11 @@ export default function PlanningPage() {
           </h2>
         </div>
         <ol className="space-y-5 text-sm leading-6 text-[var(--color-muted)]">
-          <li>1. Pick the kind of Newport weekend you want before browsing vendors too hard.</li>
+          <li>1. Decide what kind of Newport experience you want before browsing vendors too hard.</li>
           <li>2. Set a real guest-count range and budget guardrails early.</li>
-          <li>3. Shortlist venues before getting lost in stylistic details.</li>
-          <li>4. Once the venue is clearer, lock planning, photography, and food priorities.</li>
-          <li>5. Use the directory to fill gaps, not to define the event from scratch.</li>
+          <li>3. Shortlist venues before getting lost in decorative details.</li>
+          <li>4. Once the venue direction is clearer, lock planning, photography, and food priorities.</li>
+          <li>5. Use the directory to fill gaps, not to define the whole event from scratch.</li>
         </ol>
       </section>
 

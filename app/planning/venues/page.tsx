@@ -4,7 +4,7 @@ import Link from "next/link"
 export const metadata: Metadata = {
   title: "Newport Wedding Venues",
   description:
-    "A practical guide to Newport wedding venues, venue styles, and how to narrow the right fit for your weekend.",
+    "A practical guide to Newport wedding venues, venue styles, and how to narrow the right fit in one of America’s premier wedding destinations.",
 }
 
 const venueAngles = [
@@ -21,13 +21,13 @@ export default function VenuePlanningPage() {
           <p className="font-sans text-[0.72rem] font-semibold uppercase tracking-[0.24em] text-[var(--color-gold-deep)]">
             Venue Planning
           </p>
-        <h1 className="mt-4 text-5xl font-semibold tracking-[-0.04em]">
-          Newport venues should shape the weekend, not just host the ceremony.
-        </h1>
-        <p className="mt-6 text-lg leading-8 text-[var(--color-muted)]">
-          Before you compare vendors, get clear on the kind of weekend you want
-          to host. In Newport, venue decisions usually determine guest flow,
-          budget pressure, seasonality, and the overall tone of the event.
+          <h1 className="mt-4 text-5xl font-semibold tracking-[-0.04em]">
+            In Newport, the venue does more than host the wedding. It sets the tone.
+          </h1>
+          <p className="mt-6 text-lg leading-8 text-[var(--color-muted)]">
+            Before you compare vendors, get clear on the kind of weekend you want
+            to host. In Newport, venue decisions usually determine guest flow,
+            budget pressure, seasonality, and the overall tone of the event.
           </p>
         </div>
         <div className="rounded-[2rem] border border-[var(--color-line)] bg-white p-7 shadow-[0_18px_40px_rgba(66,45,28,0.08)]">
@@ -74,15 +74,15 @@ export default function VenuePlanningPage() {
             </p>
           </div>
           <div className="rounded-[1.5rem] bg-white p-5">
-              <h3 className="text-lg font-semibold">Rental complexity</h3>
-              <p className="mt-3 text-sm leading-6 text-[var(--color-muted)]">
+            <h3 className="text-lg font-semibold">Rental complexity</h3>
+            <p className="mt-3 text-sm leading-6 text-[var(--color-muted)]">
               Some formats need much more coordination around tents, power, furniture, staffing, and weather backup.
-              </p>
-            </div>
+            </p>
+          </div>
           <div className="rounded-[1.5rem] bg-white p-5">
             <h3 className="text-lg font-semibold">Weekend atmosphere</h3>
             <p className="mt-3 text-sm leading-6 text-[var(--color-muted)]">
-              The venue should support the type of social pace you want, from intimate to high-energy.
+              The venue should support the social pace you want, from intimate and understated to high-energy and guest-heavy.
             </p>
           </div>
         </div>

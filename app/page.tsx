@@ -4,7 +4,7 @@ import Link from "next/link"
 export const metadata: Metadata = {
   title: "Newport Wedding Planning",
   description:
-    "Plan a Newport wedding with venue ideas, local guidance, and a curated directory of vendors.",
+    "Plan a Newport wedding with sharper venue guidance, local perspective, and a curated directory built for one of America’s premier wedding destinations.",
 }
 
 const planningHighlights = [
@@ -46,11 +46,12 @@ export default function Home() {
               Newport, Rhode Island
             </p>
             <h1 className="mt-5 max-w-3xl text-5xl font-semibold tracking-[-0.04em] text-[var(--color-ink)] sm:text-6xl">
-              A better starting point for Newport wedding planning.
+              Planning a Newport wedding should feel elevated from the start.
             </h1>
             <p className="mt-6 max-w-2xl text-lg leading-8 text-[var(--color-muted)] sm:text-xl">
-              Sort out venues, timing, guest flow, and the shape of the weekend
-              before you get buried in a thousand vendor tabs.
+              Newport is one of America&apos;s premier wedding destinations. Start
+              with venues, timing, guest experience, and the shape of the
+              weekend before you disappear into a dozen vendor spreadsheets.
             </p>
             <div className="mt-8 flex flex-col gap-3 sm:flex-row">
               <Link
@@ -75,15 +76,15 @@ export default function Home() {
               <ol className="mt-4 space-y-4 text-sm leading-6 text-[var(--color-muted)]">
                 <li>
                   <span className="font-semibold text-[var(--color-ink)]">1.</span>{" "}
-                  Decide what kind of Newport weekend you are actually trying to host.
+                  Decide what kind of Newport weekend you want to host.
                 </li>
                 <li>
                   <span className="font-semibold text-[var(--color-ink)]">2.</span>{" "}
-                  Narrow venue style and guest-count range before building a vendor list.
+                  Narrow venue style, guest count, and season before building a vendor list.
                 </li>
                 <li>
                   <span className="font-semibold text-[var(--color-ink)]">3.</span>{" "}
-                  Use the directory after the big decisions start getting clearer.
+                  Use the directory once the major decisions are clearer.
                 </li>
               </ol>
             </div>
@@ -111,12 +112,12 @@ export default function Home() {
               MVP Focus
             </p>
             <h2 className="mt-3 text-3xl font-semibold tracking-[-0.03em]">
-              A tighter wedding planning experience beats a sprawling, empty site.
+              Newport deserves a site with taste, judgment, and real signal.
             </h2>
           </div>
           <p className="max-w-xl text-sm leading-6 text-[var(--color-muted)]">
-            The goal is to help couples make better decisions quickly, then layer
-            monetization in later once the public product already feels strong.
+            The goal is not to feel massive on day one. It is to help couples
+            make better decisions faster, then expand from a stronger foundation.
           </p>
         </div>
         <div className="mt-10 grid gap-4 md:grid-cols-3">
@@ -154,8 +155,9 @@ export default function Home() {
             <div className="rounded-[1.75rem] bg-[var(--color-cream-strong)] p-6">
               <h3 className="text-lg font-semibold">A real destination weekend</h3>
               <p className="mt-3 text-sm leading-6 text-[var(--color-muted)]">
-                Newport works best when ceremony, dinner, guest stays, and time on
-                the water feel like one coherent plan rather than separate bookings.
+                Newport works best when ceremony, dinner, guest stays, and time
+                on the water feel like one coherent experience rather than a
+                stack of separate bookings.
               </p>
             </div>
             <div className="rounded-[1.75rem] bg-[var(--color-cream-strong)] p-6">
@@ -175,8 +177,8 @@ export default function Home() {
             <div className="rounded-[1.75rem] bg-[var(--color-cream-strong)] p-6">
               <h3 className="text-lg font-semibold">Curated beats exhaustive</h3>
               <p className="mt-3 text-sm leading-6 text-[var(--color-muted)]">
-                The goal is not to dump every listing on one page. The goal is to
-                make the first decisions better and the later search cleaner.
+                The goal is not to look endless. The goal is to make the first
+                decisions sharper and the later search cleaner.
               </p>
             </div>
           </div>

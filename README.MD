@@ -174,12 +174,11 @@ Current admin routes:
 The current order of work is:
 
 1. tighten product framing and MVP scope
-2. improve the public-facing design system
-3. build the first strong planning/editorial pages
-4. improve the directory landing page and category templates
-5. fix route/data correctness issues
-6. add minimal test coverage
-7. prepare for deployment
+2. deepen the first wave of planning and venue SEO pages
+3. improve the directory landing page and category templates
+4. add broader smoke coverage for key routes and helpers
+5. verify analytics/search-console setup once traffic starts coming in
+6. prepare for deployment
 
 Full details live in [TODO.md](/D:/_work/npt-weddings/TODO.md).
 
@@ -209,7 +208,8 @@ Before deployment:
 - verify mobile layout
 - check metadata and sitemap behavior
 - make sure launch nav only includes real pages
-- connect Google Analytics and Search Console when ready
+- verify GA4 traffic after a few days of live visits
+- connect Search Console and submit the sitemap
 
 ## Notes
 

@@ -1,5 +1,11 @@
 import type { Metadata } from "next"
 import Link from "next/link"
+import { Breadcrumbs } from "@/components/breadcrumbs"
+import {
+  buildArticleJsonLd,
+  buildBreadcrumbList,
+  serializeJsonLd,
+} from "@/lib/structured-data"
 
 export const metadata: Metadata = {
   title: "Newport Wedding Venues",
@@ -11,22 +17,74 @@ const venueAngles = [
   {
     title: "Waterfront Venues",
     href: "/planning/venues/waterfront",
+    description:
+      "Best for couples who want the setting to carry the mood but are willing to treat exposure and timing as real planning constraints.",
   },
   {
     title: "Luxury Venues",
     href: "/planning/venues/luxury",
+    description:
+      "Best for couples who care about service quality, guest comfort, and a highly polished weekend from arrival through farewell.",
   },
   {
     title: "Small Wedding Venues",
     href: "/planning/venues/small-weddings",
+    description:
+      "Best for tighter guest counts where intimacy, flow, and hospitality matter more than scaling up for spectacle.",
+  },
+]
+
+const venueDecisionCards = [
+  {
+    title: "Choose the weekend shape first",
+    body:
+      "A destination-heavy wedding, a one-day city wedding, and a coastal estate weekend are different systems. Your venue should match the system you want.",
+  },
+  {
+    title: "Compare operational load, not just beauty",
+    body:
+      "Some venues quietly require more rentals, transport planning, weather backup, and staffing than the headline price suggests.",
+  },
+  {
+    title: "Use the venue to reduce later noise",
+    body:
+      "A strong venue simplifies later vendor decisions. A weak-fit venue makes every later decision feel like patchwork.",
   },
 ]
 
 export default function VenuePlanningPage() {
+  const breadcrumbJsonLd = buildBreadcrumbList([
+    { name: "Home", path: "/" },
+    { name: "Planning", path: "/planning" },
+    { name: "Venues", path: "/planning/venues" },
+  ])
+  const articleJsonLd = buildArticleJsonLd({
+    title: "Newport Wedding Venues",
+    description:
+      "A practical guide to Newport wedding venues, venue styles, and how to narrow the right fit in one of America’s premier wedding destinations.",
+    path: "/planning/venues",
+  })
+
   return (
     <div className="mx-auto max-w-6xl px-4 py-16 sm:px-6">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: serializeJsonLd(breadcrumbJsonLd) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: serializeJsonLd(articleJsonLd) }}
+      />
       <div className="grid gap-10 lg:grid-cols-[1.1fr_0.9fr] lg:items-start">
         <div className="max-w-3xl">
+          <Breadcrumbs
+            items={[
+              { href: "/", label: "Home" },
+              { href: "/planning", label: "Planning" },
+              { label: "Venues" },
+            ]}
+            className="mb-5 text-[var(--color-muted)]"
+          />
           <p className="font-sans text-[0.72rem] font-semibold uppercase tracking-[0.24em] text-[var(--color-gold-deep)]">
             Venue Planning
           </p>
@@ -57,13 +115,25 @@ export default function VenuePlanningPage() {
           <Link
             key={angle.title}
             href={angle.href}
-            className="rounded-[1.75rem] border border-[var(--color-line)] bg-[var(--color-cream-strong)] p-6"
+            className="rounded-[1.75rem] border border-[var(--color-line)] bg-[var(--color-cream-strong)] p-6 transition-colors hover:border-[var(--color-line-strong)]"
           >
             <h2 className="text-xl font-semibold">{angle.title}</h2>
             <p className="mt-3 text-sm leading-6 text-[var(--color-muted)]">
-              Explore this Newport venue angle in more detail.
+              {angle.description}
             </p>
           </Link>
+        ))}
+      </section>
+
+      <section className="mt-14 grid gap-4 md:grid-cols-3">
+        {venueDecisionCards.map((card) => (
+          <article
+            key={card.title}
+            className="rounded-[1.75rem] border border-[var(--color-line)] bg-[var(--color-cream-strong)] p-6"
+          >
+            <h2 className="text-xl font-semibold">{card.title}</h2>
+            <p className="mt-3 text-sm leading-6 text-[var(--color-muted)]">{card.body}</p>
+          </article>
         ))}
       </section>
 
@@ -101,14 +171,24 @@ export default function VenuePlanningPage() {
         </div>
       </section>
 
-      <div className="mt-14">
+      <section className="mt-14 grid gap-4 rounded-[2rem] border border-[var(--color-line)] bg-white p-7 md:grid-cols-[1fr_auto] md:items-center">
+        <div>
+          <p className="font-sans text-[0.72rem] font-semibold uppercase tracking-[0.24em] text-[var(--color-gold-deep)]">
+            Next move
+          </p>
+          <p className="mt-3 max-w-2xl text-sm leading-6 text-[var(--color-muted)]">
+            Once the venue model feels clearer, move into the directory with fewer
+            open questions. The point is to browse from a stronger point of view,
+            not to start browsing in order to find one.
+          </p>
+        </div>
         <Link
-          href="/wedding"
-          className="inline-flex rounded-full border border-[var(--color-line-strong)] px-5 py-3 text-sm font-medium text-[var(--color-ink)] hover:bg-white"
+          href="/wedding/venues"
+          className="inline-flex rounded-full border border-[var(--color-line-strong)] px-5 py-3 text-sm font-medium text-[var(--color-ink)] hover:bg-[var(--color-cream-strong)]"
         >
-          Continue to the directory
+          Browse venue listings
         </Link>
-      </div>
+      </section>
     </div>
   )
 }

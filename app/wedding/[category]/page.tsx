@@ -3,6 +3,7 @@ import { notFound } from "next/navigation"
 import Link from "next/link"
 import { Breadcrumbs } from "@/components/breadcrumbs"
 import { getCategoryBySlug, getVendorsByCategory } from "@/lib/queries"
+import { getCategoryInsight } from "@/lib/directory-content"
 import {
   buildBreadcrumbList,
   buildCollectionPageJsonLd,
@@ -52,6 +53,7 @@ export default async function CategoryPage({ params }: Props) {
     itemPaths: vendors.map((vendor) => `/wedding/${category.slug}/${vendor.slug}`),
   })
   const breadcrumbJsonLd = buildBreadcrumbList(breadcrumbItems)
+  const insight = getCategoryInsight(category.slug)
 
   const featured = vendors.filter((v) => v.tier === "featured")
   const rest = vendors.filter((v) => v.tier !== "featured")
@@ -90,9 +92,9 @@ export default async function CategoryPage({ params }: Props) {
           >
             {category.label}
           </h1>
-          {category.description && (
-            <p className="mt-2 max-w-xl text-white/70">{category.description}</p>
-          )}
+          <p className="mt-2 max-w-2xl text-white/70">
+            {category.description ?? insight.intro}
+          </p>
           <div className="mt-5 flex flex-wrap items-center gap-3 text-xs uppercase tracking-[0.2em] text-white/70">
             <span>{vendors.length} {vendors.length === 1 ? "listing" : "listings"}</span>
             <span className="opacity-30">•</span>
@@ -113,15 +115,12 @@ export default async function CategoryPage({ params }: Props) {
               How to use this page
             </p>
             <p className="mt-3 text-sm leading-6 text-neutral-600">
-              Treat this as a narrowed working list, not a final answer. Start by
-              shortlisting the few businesses that match your venue style, guest
-              count, and overall weekend tone.
+              {insight.intro}
             </p>
           </div>
           <div className="flex flex-col justify-between gap-4 rounded-[1.25rem] bg-[var(--background)] p-5">
             <p className="text-sm leading-6 text-neutral-600">
-              If you are still early in planning, venue decisions usually matter
-              more than adding more vendors to the shortlist.
+              {insight.decisionLens}
             </p>
             <Link
               href="/planning/venues"
@@ -130,6 +129,27 @@ export default async function CategoryPage({ params }: Props) {
             >
               Read the venue planning guide →
             </Link>
+          </div>
+        </div>
+
+        <div className="mb-8 grid gap-4 md:grid-cols-3">
+          {insight.nextSteps.map((step) => (
+            <Link
+              key={step.href}
+              href={step.href}
+              className="rounded-[1.5rem] border border-[var(--color-line)] bg-[var(--color-cream-strong)] p-5 transition-colors hover:border-[var(--color-line-strong)]"
+            >
+              <p className="text-xs font-semibold uppercase tracking-[0.2em]" style={{ color: "var(--gold)" }}>
+                {step.label}
+              </p>
+              <p className="mt-3 text-sm leading-6 text-neutral-600">{step.description}</p>
+            </Link>
+          ))}
+          <div className="rounded-[1.5rem] border border-[var(--color-line)] bg-white p-5">
+            <p className="text-xs font-semibold uppercase tracking-[0.2em]" style={{ color: "var(--gold)" }}>
+              Shortlist rule
+            </p>
+            <p className="mt-3 text-sm leading-6 text-neutral-600">{insight.shortlistPrompt}</p>
           </div>
         </div>
 

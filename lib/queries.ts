@@ -1,5 +1,5 @@
-import { db } from "./db"
-import type { Category, Vendor, VendorPhoto, Tag } from "./types"
+import { db } from "./db.ts"
+import type { Category, Vendor, VendorPhoto, Tag } from "./types.ts"
 
 function requireDb() {
   if (!db) {

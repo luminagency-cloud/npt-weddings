@@ -1,12 +1,27 @@
 import assert from "node:assert/strict"
 import {
+  getAdminCategories,
+  getAdminVendors,
+  getCategories,
+  getCategoryById,
+  getCategoryBySlug,
+  getVendorByCategoryAndSlug,
+  getVendorById,
+  getVendorBySlug,
+  getVendorPhotos,
+  getVendorTags,
+  getVendorsByCategory,
+  updateCategory,
+  updateVendor,
+} from "./queries.ts"
+import {
   absoluteUrl,
   buildBreadcrumbList,
   buildCollectionPageJsonLd,
   serializeJsonLd,
 } from "./structured-data.ts"
 
-function run() {
+async function run() {
   assert.equal(
     absoluteUrl("/planning/venues"),
     "https://npt-weddings.vercel.app/planning/venues"
@@ -40,7 +55,58 @@ function run() {
     url: "https://npt-weddings.vercel.app/wedding/venues/ocean-house",
   })
 
+  assert.deepEqual(await getCategories(), [])
+  assert.equal(await getCategoryBySlug("venues"), null)
+  assert.deepEqual(await getVendorsByCategory("venues"), [])
+  assert.equal(await getVendorBySlug("ocean-house"), null)
+  assert.equal(await getVendorByCategoryAndSlug("venues", "ocean-house"), null)
+  assert.deepEqual(await getVendorPhotos("vendor-id"), [])
+  assert.deepEqual(await getVendorTags("vendor-id"), [])
+  assert.deepEqual(await getAdminVendors(), [])
+  assert.equal(await getVendorById("vendor-id"), null)
+  assert.deepEqual(await getAdminCategories(), [])
+  assert.equal(await getCategoryById("category-id"), null)
+
+  await assert.rejects(
+    () =>
+      updateCategory({
+        id: "category-id",
+        slug: "venues",
+        label: "Venues",
+        description: null,
+        sort_order: 0,
+        active: true,
+      }),
+    /DATABASE_URL environment variable is not set/
+  )
+
+  await assert.rejects(
+    () =>
+      updateVendor({
+        id: "vendor-id",
+        category_id: "category-id",
+        name: "Vendor",
+        slug: "vendor",
+        address: null,
+        city: "Newport",
+        state: "RI",
+        zip: null,
+        phone: null,
+        website: null,
+        email: null,
+        description: null,
+        description_override: null,
+        tier: "basic",
+        verified: false,
+        active: true,
+        promo_label: null,
+        meta_title: null,
+        meta_description: null,
+      }),
+    /DATABASE_URL environment variable is not set/
+  )
+
   console.log("structured-data tests passed")
 }
 
-run()
+void run()

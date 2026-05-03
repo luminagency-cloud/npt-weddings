@@ -18,17 +18,9 @@ This means:
 - Basic admin auth exists.
 - Database schema exists for categories, vendors, photos, tags, and claim/payment-related fields.
 - Claim and payment flows are placeholders.
-- README now reflects the actual product and local setup.
-- Build and lint checks run locally.
-- Local builds now degrade safely when `DATABASE_URL` is absent.
-- No automated test suite exists yet.
-
-## Recently Completed
-
-- Replaced the default README with project-specific setup and scope.
-- Added GA4 wiring to the root layout through the site config.
-- Hardened database access so missing local env no longer crashes read-only builds.
-- Confirmed the current Next.js 16 implementation path against the local docs before edits.
+- Launch-category scope is not locked yet.
+- Vendor inventory depth is still incomplete.
+- No broad route-level test coverage exists yet.
 
 ## Product Direction
 
@@ -276,8 +268,7 @@ Goal: make the codebase safe to build on.
 
 ### Must do
 
-- Fix route/data mismatches and other correctness bugs in vendor detail flows.
-- Add a basic test setup for query and route logic.
+- Add broader route-level and query-level smoke coverage.
 - Define environment variables clearly and separate required vs optional config where gaps remain.
 - Add error handling for missing site URL.
 - Confirm current Next.js 16 patterns against local docs before adding new app behavior.
@@ -444,11 +435,10 @@ Goal: make the site crawlable, indexable, and measurable.
 
 #### Still to do
 
-- Add breadcrumb structured data
-- Add page-type structured data where appropriate
 - Set final production domain everywhere
 - Submit sitemap in Search Console
-- Connect the site to Google Analytics and Search Console accounts
+- Verify GA4 is receiving traffic after a few days of live visits
+- Connect and verify the site in Google Search Console
 
 ### Layer 2: Core Indexable Page Types
 
@@ -614,14 +604,13 @@ Goal: prevent scale from creating junk.
 
 These are the next concrete SEO tasks:
 
-1. Add breadcrumb structured data.
-2. Add page-type structured data to category/vendor/guide pages.
-3. Set and verify GA4.
-4. Set and verify Google Search Console.
-5. Submit sitemap to Search Console.
-6. Build the first 5 true SEO landing pages manually.
-7. Add category attributes needed for style/type intent pages.
-8. Design the future `guides` / `seo_pages` content model.
+1. Set and verify the final production domain everywhere.
+2. Verify GA4 is receiving traffic after a few days of live visits.
+3. Set and verify Google Search Console.
+4. Submit sitemap to Search Console.
+5. Build the next true SEO landing pages manually.
+6. Add category attributes needed for style/type intent pages.
+7. Design the future `guides` / `seo_pages` content model.
 
 ### SEO Build Sequence
 
@@ -951,10 +940,11 @@ Do not prioritize monetization until the couple-facing product is clearly useful
 These are the next concrete tasks I’d do in order:
 
 1. Confirm the MVP launch categories and target counts in this doc.
-2. Add the first 5 strong editorial pages.
+2. Finish the remaining first-wave editorial and venue SEO pages.
 3. Improve the directory landing page and first category template.
-4. Add a minimal test setup.
-5. Build a simple internal content workflow before touching vendor claims.
+4. Add broader smoke coverage for key routes and data helpers.
+5. Verify GA4 is receiving traffic after a few days, then connect Search Console and submit the sitemap.
+6. Build a simple internal content workflow before touching vendor claims.
 
 ## Working Rules
 

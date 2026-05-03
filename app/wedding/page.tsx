@@ -1,6 +1,12 @@
 import type { Metadata } from "next"
 import Link from "next/link"
+import { Breadcrumbs } from "@/components/breadcrumbs"
 import { getCategories } from "@/lib/queries"
+import {
+  buildBreadcrumbList,
+  buildCollectionPageJsonLd,
+  serializeJsonLd,
+} from "@/lib/structured-data"
 
 export const revalidate = 3600
 
@@ -22,6 +28,24 @@ const CATEGORY_ICONS: Record<string, string> = {
   planners: "📋",
 }
 
+const directoryPrinciples = [
+  {
+    title: "Do venue work first",
+    body:
+      "If the wedding format is still fuzzy, the directory will feel noisier than it actually is. Venue clarity makes every later category easier to judge.",
+  },
+  {
+    title: "Shortlist by fit, not by quantity",
+    body:
+      "The goal is not to create a giant list. The goal is to get to a tighter set of businesses that match tone, guest count, and operational reality.",
+  },
+  {
+    title: "Use categories at the right moment",
+    body:
+      "Some categories matter earlier than others. Venues, planners, and photographers usually deserve attention before the rest of the stack.",
+  },
+]
+
 export default async function WeddingDirectoryPage() {
   const categories = await getCategories()
   const liveCategories = categories.filter((category) => (category.vendor_count ?? 0) > 0)
@@ -29,9 +53,27 @@ export default async function WeddingDirectoryPage() {
     (sum, category) => sum + (category.vendor_count ?? 0),
     0
   )
+  const breadcrumbJsonLd = buildBreadcrumbList([
+    { name: "Home", path: "/" },
+    { name: "Wedding Directory", path: "/wedding" },
+  ])
+  const collectionJsonLd = buildCollectionPageJsonLd({
+    title: "Wedding Directory | Newport, Rhode Island",
+    description: "Browse wedding vendors by category for Newport, Rhode Island.",
+    path: "/wedding",
+    itemPaths: liveCategories.map((category) => `/wedding/${category.slug}`),
+  })
 
   return (
     <div>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: serializeJsonLd(breadcrumbJsonLd) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: serializeJsonLd(collectionJsonLd) }}
+      />
       <section
         className="relative overflow-hidden px-4 py-28 text-center text-white"
         style={{
@@ -50,6 +92,13 @@ export default async function WeddingDirectoryPage() {
         />
 
         <div className="relative mx-auto max-w-3xl">
+          <Breadcrumbs
+            items={[
+              { href: "/", label: "Home" },
+              { label: "Wedding Directory" },
+            ]}
+            className="mb-5 justify-center text-[var(--gold-light)]"
+          />
           <p
             className="mb-5 text-xs uppercase tracking-[0.35em]"
             style={{ color: "var(--gold-light)" }}
@@ -83,6 +132,15 @@ export default async function WeddingDirectoryPage() {
       />
 
       <section className="mx-auto max-w-6xl px-4 py-16 sm:px-6">
+        <div className="mb-12 grid gap-4 rounded-[2rem] border border-[var(--color-line)] bg-white p-6 md:grid-cols-3">
+          {directoryPrinciples.map((item) => (
+            <article key={item.title} className="rounded-[1.5rem] bg-[var(--color-cream-strong)] p-5">
+              <h2 className="text-lg font-semibold">{item.title}</h2>
+              <p className="mt-3 text-sm leading-6 text-[var(--color-muted)]">{item.body}</p>
+            </article>
+          ))}
+        </div>
+
         <div className="mb-12 text-center">
           <h2
             className="mb-2 text-3xl font-semibold"
@@ -135,26 +193,40 @@ export default async function WeddingDirectoryPage() {
       </section>
 
       <section
-        className="px-4 py-14 text-center"
+        className="px-4 py-14"
         style={{ background: "var(--card-bg)", borderTop: "1px solid var(--border)" }}
       >
-        <p
-          className="mb-2 text-2xl font-semibold"
-          style={{ fontFamily: "var(--font-playfair)", color: "var(--primary)" }}
-        >
-          Need help narrowing your options?
-        </p>
-        <p className="mb-5 text-sm text-neutral-500">
-          Start with venues, timing, and guest experience before treating the
-          directory like a giant checklist.
-        </p>
-        <Link
-          href="/planning"
-          className="inline-flex items-center gap-2 rounded-full px-6 py-2.5 text-sm font-medium text-white transition-opacity hover:opacity-90"
-          style={{ background: "var(--primary)" }}
-        >
-          Start planning
-        </Link>
+        <div className="mx-auto grid max-w-6xl gap-6 rounded-[2rem] border border-[var(--color-line)] bg-white p-7 md:grid-cols-[1.1fr_0.9fr] md:items-center">
+          <div>
+            <p
+              className="mb-2 text-2xl font-semibold"
+              style={{ fontFamily: "var(--font-playfair)", color: "var(--primary)" }}
+            >
+              Start from planning, then browse with fewer open questions.
+            </p>
+            <p className="text-sm leading-6 text-neutral-500">
+              The strongest way to use the directory is to let venue format,
+              guest experience, budget shape, and weekend tone narrow the search
+              before you start clicking through listings.
+            </p>
+          </div>
+          <div className="flex flex-col gap-3 md:items-end">
+            <Link
+              href="/planning"
+              className="inline-flex items-center gap-2 rounded-full px-6 py-2.5 text-sm font-medium text-white transition-opacity hover:opacity-90"
+              style={{ background: "var(--primary)" }}
+            >
+              Start planning
+            </Link>
+            <Link
+              href="/planning/venues"
+              className="text-sm font-medium hover:underline"
+              style={{ color: "var(--primary)" }}
+            >
+              Or start with venue guidance →
+            </Link>
+          </div>
+        </div>
       </section>
     </div>
   )

@@ -3,7 +3,7 @@ import type { Metadata } from "next"
 export const metadata: Metadata = {
   title: "About",
   description:
-    "About Newport Weddings and the couple-first point of view behind the site.",
+    "About Married in Newport and the couple-first point of view behind the site.",
 }
 
 export default function AboutPage() {
@@ -17,7 +17,7 @@ export default function AboutPage() {
       </h1>
       <div className="mt-8 space-y-6 text-base leading-8 text-[var(--color-muted)]">
         <p>
-          Newport Weddings is being built as a better starting point for couples
+          Married in Newport is being built as a better starting point for couples
           planning weddings in Newport, Rhode Island. The goal is not to launch
           a bloated marketplace and call it a planning resource.
         </p>

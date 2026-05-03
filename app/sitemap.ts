@@ -1,19 +1,23 @@
 import type { MetadataRoute } from "next"
-import { getAllActiveVendorsForSitemap, getCategories } from "@/lib/queries"
 import { siteConfig, staticRoutes } from "@/lib/site"
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
-  const [vendors, categories] = await Promise.all([
-    getAllActiveVendorsForSitemap(),
-    getCategories(),
-  ])
-
   const staticUrls: MetadataRoute.Sitemap = staticRoutes.map((route) => ({
     url: `${siteConfig.siteUrl}${route}`,
     lastModified: new Date(),
     changeFrequency: route === "/" ? "weekly" : "monthly",
     priority: route === "/" ? 1.0 : 0.8,
   }))
+
+  if (!process.env.DATABASE_URL) {
+    return staticUrls
+  }
+
+  const { getAllActiveVendorsForSitemap, getCategories } = await import("@/lib/queries")
+  const [vendors, categories] = await Promise.all([
+    getAllActiveVendorsForSitemap(),
+    getCategories(),
+  ])
 
   const vendorUrls: MetadataRoute.Sitemap = vendors.map((v) => ({
     url: `${siteConfig.siteUrl}/wedding/${v.cat_slug}/${v.slug}`,

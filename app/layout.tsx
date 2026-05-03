@@ -20,7 +20,7 @@ export const metadata: Metadata = {
   metadataBase: new URL(siteConfig.siteUrl),
   title: {
     default: siteConfig.name,
-    template: "%s | Newport Weddings",
+    template: `%s | ${siteConfig.seoName}`,
   },
   description: siteConfig.description,
   alternates: {
@@ -109,14 +109,14 @@ export default function RootLayout({
             <div className="mx-auto flex w-full max-w-6xl items-center justify-between gap-6 px-4 py-4 sm:px-6">
               <Link href="/" className="flex items-center gap-3">
                 <span className="flex h-10 w-10 items-center justify-center rounded-full border border-[var(--gold)] bg-white text-sm font-semibold tracking-[0.2em] text-[var(--primary)]">
-                  NW
+                  MN
                 </span>
                 <span className="leading-tight">
                   <span className="block text-[0.68rem] font-semibold uppercase tracking-[0.28em] text-[var(--gold)]">
-                    Newport
+                    Married in
                   </span>
                   <span className="block text-lg font-semibold" style={{ fontFamily: "var(--font-playfair)" }}>
-                    Weddings
+                    Newport
                   </span>
                 </span>
               </Link>
@@ -157,11 +157,12 @@ export default function RootLayout({
             <div className="mx-auto flex max-w-6xl flex-col gap-6 px-4 py-10 sm:px-6 md:flex-row md:items-end md:justify-between">
               <div className="max-w-xl">
                 <p className="text-[0.72rem] font-semibold uppercase tracking-[0.24em] text-[var(--gold-light)]">
-                  Newport Weddings
+                  Married in Newport
                 </p>
                 <p className="mt-3 text-sm leading-6">
-                  A couple-first wedding planning site for Newport, Rhode Island:
-                  venues, planning guidance, and a curated local directory.
+                  A Newport wedding planning guide for couples who want stronger
+                  venue judgment, better local context, and a cleaner path into
+                  the right vendors.
                 </p>
               </div>
               <div className="flex flex-wrap gap-x-5 gap-y-2 text-sm text-white/70">

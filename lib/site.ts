@@ -1,7 +1,8 @@
 export const siteConfig = {
-  name: "Newport Weddings",
+  name: "Married in Newport",
+  seoName: "Weddings in Newport",
   description:
-    "A couple-first Newport wedding planning site with venue guidance, local perspective, and a curated vendor directory.",
+    "Married in Newport is a couple-first wedding planning guide for Newport with venue guidance, local perspective, and a curated directory built around real Newport wedding search intent.",
   siteUrl: process.env.NEXT_PUBLIC_SITE_URL ?? "https://npt-weddings.vercel.app",
   googleVerification: process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION,
   gaMeasurementId: process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID,

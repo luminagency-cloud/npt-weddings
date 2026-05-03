@@ -1,6 +1,8 @@
-# Newport Weddings
+# Married in Newport
 
-Newport Weddings is a Newport-area wedding planning site with a curated vendor directory inside it.
+Married in Newport is a Newport-area wedding planning site with a curated vendor directory inside it.
+
+The brand is `Married in Newport`. The search-facing language stays anchored in `Newport weddings`, `weddings in Newport`, and related venue and planning terms.
 
 The MVP is not a vendor platform. The MVP is a polished, useful site for couples:
 

@@ -1,4 +1,5 @@
 import assert from "node:assert/strict"
+import { guidePages } from "./guide-content.ts"
 import {
   createCategory,
   createVendor,
@@ -62,6 +63,10 @@ async function run() {
     position: 1,
     url: "https://npt-weddings.vercel.app/wedding/venues/ocean-house",
   })
+
+  const guidePaths = Object.values(guidePages).map((guide) => guide.path)
+  assert.equal(new Set(guidePaths).size, guidePaths.length)
+  assert.equal(guidePages.chooseVenue.metadataTitle, "How to Choose a Newport Wedding Venue")
 
   const importRows = parseVendorImportCsv(`category_slug,name,website,email,phone,city,state,description
 venues,Castle Hill Inn,https://castlehillinn.com,,(401) 555-0100,Newport,RI,"Waterfront wedding venue"

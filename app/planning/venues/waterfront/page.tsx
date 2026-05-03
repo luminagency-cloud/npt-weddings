@@ -10,6 +10,31 @@ export const metadata: Metadata = {
 export default function WaterfrontWeddingVenuesPage() {
   return (
     <SeoGuidePage
+      breadcrumbs={[
+        { href: "/", label: "Home" },
+        { href: "/planning", label: "Planning" },
+        { href: "/planning/venues", label: "Venues" },
+        { label: "Waterfront Venues" },
+      ]}
+      description="A guide to waterfront wedding venues in Newport for couples balancing scenery, weather exposure, and guest experience."
+      decisionNotes={[
+        {
+          title: "Best fit",
+          body:
+            "Waterfront venues are strongest for couples who genuinely want the harbor, coastline, or open-air setting to shape the emotional tone of the weekend rather than just appear in the photos.",
+        },
+        {
+          title: "Operational pressure",
+          body:
+            "These venues ask more of timing, transportation, comfort planning, and backup options. That does not make them risky by default, but it does mean the logistics need to be treated as part of the design.",
+        },
+        {
+          title: "What to watch for",
+          body:
+            "If the venue feels magical only in perfect weather, ask harder questions. The stronger properties still feel elegant when wind picks up, temperatures shift, or guest transitions take longer than expected.",
+        },
+      ]}
+      path="/planning/venues/waterfront"
       eyebrow="Venue Intent"
       title="Waterfront wedding venues in Newport earn their appeal. They also raise the stakes."
       intro="The waterfront is one of Newport’s strongest selling points, and couples search for it for obvious reasons. But the right waterfront venue is not just about a view. It is about handling wind, weather, timing, and guest movement without losing the elegance that made the venue attractive in the first place."
@@ -44,8 +69,19 @@ export default function WaterfrontWeddingVenuesPage() {
           body:
             "The strongest waterfront venues feel composed, not fragile. They let the setting carry the atmosphere without making the whole event dependent on perfect conditions.",
         },
+        {
+          title: "Guest comfort is part of the brief",
+          body:
+            "Shuttles, footwear, shade, wraps, raw bars, champagne, and sunset timing can all feel romantic until guests are left waiting in wind or sun. Good waterfront planning protects the mood by protecting comfort.",
+        },
+        {
+          title: "A weekend format helps",
+          body:
+            "Waterfront weddings often feel strongest when the rest of the weekend supports the same sense of place. Pairing the ceremony with an intentional itinerary gives the setting more coherence than treating the view as a one-off moment.",
+        },
       ]}
       relatedLinks={[
+        { href: "/planning/venues/luxury", label: "Compare luxury venue tradeoffs" },
         { href: "/newport-guide/best-time-of-year", label: "Best time of year for a Newport wedding" },
         { href: "/newport-guide/weekend-itinerary", label: "Newport wedding weekend itinerary" },
         { href: "/wedding/venues", label: "Browse venue listings" },

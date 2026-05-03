@@ -10,6 +10,13 @@ export const metadata: Metadata = {
 export default function BestTimeOfYearPage() {
   return (
     <SeoGuidePage
+      breadcrumbs={[
+        { href: "/", label: "Home" },
+        { href: "/newport-guide", label: "Newport Guide" },
+        { label: "Best Time of Year" },
+      ]}
+      description="A guide to choosing the best time of year for a Newport wedding based on seasonality, weather, pricing, and guest experience."
+      path="/newport-guide/best-time-of-year"
       eyebrow="Local Guide"
       title="The best time of year for a Newport wedding depends on what you value most."
       intro="There is no single best season for every Newport wedding. Summer brings prestige and energy. Shoulder season brings more breathing room. Each choice affects atmosphere, pricing pressure, guest movement, and how much weather risk couples are really buying."

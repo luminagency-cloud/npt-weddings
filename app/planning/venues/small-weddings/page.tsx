@@ -10,6 +10,14 @@ export const metadata: Metadata = {
 export default function SmallWeddingVenuesPage() {
   return (
     <SeoGuidePage
+      breadcrumbs={[
+        { href: "/", label: "Home" },
+        { href: "/planning", label: "Planning" },
+        { href: "/planning/venues", label: "Venues" },
+        { label: "Small Wedding Venues" },
+      ]}
+      description="A guide to small wedding venues in Newport for couples prioritizing intimacy, guest experience, and a cleaner weekend format."
+      path="/planning/venues/small-weddings"
       eyebrow="Venue Intent"
       title="The best small wedding venues in Newport make intimacy feel intentional, not scaled down."
       intro="Small weddings in Newport work best when the venue supports closeness, movement, and a genuine sense of occasion. The goal is not to make a big-wedding venue feel emptier. The goal is to choose a place that feels right at a more intimate scale."

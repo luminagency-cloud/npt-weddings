@@ -1,4 +1,10 @@
+import { Breadcrumbs, type BreadcrumbLink } from "@/components/breadcrumbs"
 import Link from "next/link"
+import {
+  buildArticleJsonLd,
+  buildBreadcrumbList,
+  serializeJsonLd,
+} from "@/lib/structured-data"
 
 type Section = {
   title: string
@@ -16,7 +22,11 @@ type RelatedLink = {
 }
 
 type SeoGuidePageProps = {
+  breadcrumbs: BreadcrumbLink[]
+  description: string
+  decisionNotes?: Section[]
   eyebrow: string
+  path: string
   title: string
   intro: string
   lead: string
@@ -26,7 +36,11 @@ type SeoGuidePageProps = {
 }
 
 export function SeoGuidePage({
+  breadcrumbs,
+  description,
+  decisionNotes,
   eyebrow,
+  path,
   title,
   intro,
   lead,
@@ -34,10 +48,27 @@ export function SeoGuidePage({
   sections,
   relatedLinks,
 }: SeoGuidePageProps) {
+  const breadcrumbJsonLd = buildBreadcrumbList(
+    breadcrumbs.map((item) => ({
+      name: item.label,
+      path: item.href ?? path,
+    }))
+  )
+  const articleJsonLd = buildArticleJsonLd({ title, description, path })
+
   return (
     <div className="mx-auto max-w-6xl px-4 py-16 sm:px-6">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: serializeJsonLd(breadcrumbJsonLd) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: serializeJsonLd(articleJsonLd) }}
+      />
       <div className="grid gap-10 lg:grid-cols-[1.1fr_0.9fr] lg:items-start">
         <div className="max-w-3xl">
+          <Breadcrumbs items={breadcrumbs} className="text-[var(--color-muted)]" />
           <p className="font-sans text-[0.72rem] font-semibold uppercase tracking-[0.24em] text-[var(--color-gold-deep)]">
             {eyebrow}
           </p>
@@ -68,6 +99,22 @@ export function SeoGuidePage({
         </div>
         <p className="text-sm leading-7 text-[var(--color-muted)]">{lead}</p>
       </section>
+
+      {decisionNotes && decisionNotes.length > 0 && (
+        <section className="mt-14 grid gap-4 md:grid-cols-3">
+          {decisionNotes.map((note) => (
+            <article
+              key={note.title}
+              className="rounded-[1.75rem] border border-[var(--color-line)] bg-[var(--color-cream-strong)] p-6"
+            >
+              <h2 className="text-xl font-semibold">{note.title}</h2>
+              <p className="mt-3 text-sm leading-6 text-[var(--color-muted)]">
+                {note.body}
+              </p>
+            </article>
+          ))}
+        </section>
+      )}
 
       <section className="mt-14 grid gap-4 md:grid-cols-2">
         {sections.map((section) => (

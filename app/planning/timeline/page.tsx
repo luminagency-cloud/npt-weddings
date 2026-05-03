@@ -10,6 +10,13 @@ export const metadata: Metadata = {
 export default function TimelinePage() {
   return (
     <SeoGuidePage
+      breadcrumbs={[
+        { href: "/", label: "Home" },
+        { href: "/planning", label: "Planning" },
+        { label: "Timeline" },
+      ]}
+      description="A Newport wedding timeline guide for sequencing venue, planning, photography, food, and guest-experience decisions."
+      path="/planning/timeline"
       eyebrow="Planning Guide"
       title="A better Newport wedding timeline starts by sequencing the hard decisions first."
       intro="The cleanest wedding timelines do not come from managing every detail at once. They come from making the few high-impact decisions in the right order: venue, guest count, season, weekend format, and then the vendors that should follow."

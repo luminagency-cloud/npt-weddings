@@ -1,7 +1,13 @@
 import type { Metadata } from "next"
 import { notFound } from "next/navigation"
 import Link from "next/link"
+import { Breadcrumbs } from "@/components/breadcrumbs"
 import { getCategoryBySlug, getVendorsByCategory } from "@/lib/queries"
+import {
+  buildBreadcrumbList,
+  buildCollectionPageJsonLd,
+  serializeJsonLd,
+} from "@/lib/structured-data"
 import { VendorCard } from "@/components/vendor-card"
 
 export const revalidate = 3600
@@ -31,11 +37,35 @@ export default async function CategoryPage({ params }: Props) {
 
   if (!category) notFound()
 
+  const description =
+    category.description ??
+    `Find ${category.label.toLowerCase()} for your Newport, Rhode Island wedding.`
+  const breadcrumbItems = [
+    { name: "Home", path: "/" },
+    { name: "Wedding Directory", path: "/wedding" },
+    { name: category.label, path: `/wedding/${category.slug}` },
+  ]
+  const collectionJsonLd = buildCollectionPageJsonLd({
+    title: `${category.label} in Newport, RI`,
+    description,
+    path: `/wedding/${category.slug}`,
+    itemPaths: vendors.map((vendor) => `/wedding/${category.slug}/${vendor.slug}`),
+  })
+  const breadcrumbJsonLd = buildBreadcrumbList(breadcrumbItems)
+
   const featured = vendors.filter((v) => v.tier === "featured")
   const rest = vendors.filter((v) => v.tier !== "featured")
 
   return (
     <div>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: serializeJsonLd(breadcrumbJsonLd) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: serializeJsonLd(collectionJsonLd) }}
+      />
       <section
         className="relative overflow-hidden px-4 py-16 text-white"
         style={{ background: "linear-gradient(160deg, var(--primary) 0%, var(--primary-dark) 100%)" }}
@@ -46,13 +76,14 @@ export default async function CategoryPage({ params }: Props) {
           aria-hidden
         />
         <div className="relative mx-auto max-w-6xl">
-          <nav className="mb-5 flex items-center gap-2 text-sm" style={{ color: "var(--gold-light)" }}>
-            <Link href="/wedding" className="transition-colors hover:text-white">
-              Wedding Directory
-            </Link>
-            <span className="opacity-40">/</span>
-            <span className="text-white/90">{category.label}</span>
-          </nav>
+          <Breadcrumbs
+            items={[
+              { href: "/", label: "Home" },
+              { href: "/wedding", label: "Wedding Directory" },
+              { label: category.label },
+            ]}
+            className="mb-5 text-[var(--gold-light)]"
+          />
           <h1
             className="mb-2 text-4xl font-bold sm:text-5xl"
             style={{ fontFamily: "var(--font-playfair)" }}

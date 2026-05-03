@@ -18,8 +18,17 @@ This means:
 - Basic admin auth exists.
 - Database schema exists for categories, vendors, photos, tags, and claim/payment-related fields.
 - Claim and payment flows are placeholders.
-- README is still the default scaffold.
-- No visible test setup yet.
+- README now reflects the actual product and local setup.
+- Build and lint checks run locally.
+- Local builds now degrade safely when `DATABASE_URL` is absent.
+- No automated test suite exists yet.
+
+## Recently Completed
+
+- Replaced the default README with project-specific setup and scope.
+- Added GA4 wiring to the root layout through the site config.
+- Hardened database access so missing local env no longer crashes read-only builds.
+- Confirmed the current Next.js 16 implementation path against the local docs before edits.
 
 ## Product Direction
 
@@ -225,7 +234,6 @@ Goal: give us a straight path for implementation.
 
 ### Step 1: Product framing
 
-- Rewrite [README.md](/D:/_work/npt-weddings/README.md) to reflect the actual product and MVP scope
 - Lock the launch categories
 - Lock the launch nav
 - Lock the first 10 pages
@@ -252,7 +260,6 @@ Goal: give us a straight path for implementation.
 ### Step 5: Technical stabilization
 
 - Add minimal tests
-- Improve env handling and setup docs
 - Tighten SEO defaults and route behavior
 - Verify mobile layout and content density
 
@@ -269,11 +276,10 @@ Goal: make the codebase safe to build on.
 
 ### Must do
 
-- Replace the default [README.md](/D:/_work/npt-weddings/README.md) with project-specific setup and purpose.
 - Fix route/data mismatches and other correctness bugs in vendor detail flows.
 - Add a basic test setup for query and route logic.
-- Define environment variables clearly and separate required vs optional config.
-- Add error handling for missing site URL and missing database configuration.
+- Define environment variables clearly and separate required vs optional config where gaps remain.
+- Add error handling for missing site URL.
 - Confirm current Next.js 16 patterns against local docs before adding new app behavior.
 
 ### Nice to have
@@ -434,6 +440,7 @@ Goal: make the site crawlable, indexable, and measurable.
 - Sitemap exists
 - `robots.txt` exists
 - GA/Search Console hooks exist
+- Local env handling no longer breaks read-only builds
 
 #### Still to do
 
@@ -943,16 +950,11 @@ Do not prioritize monetization until the couple-facing product is clearly useful
 
 These are the next concrete tasks I’d do in order:
 
-1. Rewrite [README.md](/D:/_work/npt-weddings/README.md) so the repo explains the actual product and MVP.
-2. Confirm the MVP launch categories and target counts in this doc.
-3. Build the MVP navigation and homepage structure.
-4. Establish the visual system and upgrade the public-facing design quality.
-5. Create the first planning/editorial page template.
-6. Add the first 5 strong editorial pages.
-7. Improve the directory landing page and first category template.
-8. Fix known route/query correctness issues in vendor detail pages.
-9. Add a minimal test setup.
-10. Build a simple internal content workflow before touching vendor claims.
+1. Confirm the MVP launch categories and target counts in this doc.
+2. Add the first 5 strong editorial pages.
+3. Improve the directory landing page and first category template.
+4. Add a minimal test setup.
+5. Build a simple internal content workflow before touching vendor claims.
 
 ## Working Rules
 

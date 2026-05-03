@@ -10,6 +10,13 @@ export const metadata: Metadata = {
 export default function RehearsalDinnerIdeasPage() {
   return (
     <SeoGuidePage
+      breadcrumbs={[
+        { href: "/", label: "Home" },
+        { href: "/newport-guide", label: "Newport Guide" },
+        { label: "Rehearsal Dinner Ideas" },
+      ]}
+      description="Newport rehearsal dinner ideas for shaping a wedding weekend with the right tone, guest mix, and location flow."
+      path="/newport-guide/rehearsal-dinner-ideas"
       eyebrow="Local Guide"
       title="A Newport rehearsal dinner should set the tone for the weekend, not compete with it."
       intro="The best rehearsal dinners in Newport feel like a confident opening note. They frame the weekend, gather the right people, and establish the pace without exhausting everyone before the main event."

@@ -1,7 +1,17 @@
 import { db } from "./db"
 import type { Category, Vendor, VendorPhoto, Tag } from "./types"
 
+function requireDb() {
+  if (!db) {
+    throw new Error("DATABASE_URL environment variable is not set")
+  }
+
+  return db
+}
+
 export async function getCategories(): Promise<Category[]> {
+  if (!db) return []
+
   const rows = await db`
     SELECT
       c.*,
@@ -16,6 +26,8 @@ export async function getCategories(): Promise<Category[]> {
 }
 
 export async function getCategoryBySlug(slug: string): Promise<Category | null> {
+  if (!db) return null
+
   const rows = await db`
     SELECT
       c.*,
@@ -29,6 +41,8 @@ export async function getCategoryBySlug(slug: string): Promise<Category | null> 
 }
 
 export async function getVendorsByCategory(categorySlug: string): Promise<Vendor[]> {
+  if (!db) return []
+
   const rows = await db`
     SELECT v.*, c.label as category_label, c.slug as category_slug
     FROM vendors v
@@ -42,6 +56,8 @@ export async function getVendorsByCategory(categorySlug: string): Promise<Vendor
 }
 
 export async function getVendorBySlug(slug: string): Promise<Vendor | null> {
+  if (!db) return null
+
   const rows = await db`
     SELECT v.*, c.slug as category_slug, c.label as category_label
     FROM vendors v
@@ -55,6 +71,8 @@ export async function getVendorByCategoryAndSlug(
   categorySlug: string,
   vendorSlug: string
 ): Promise<Vendor | null> {
+  if (!db) return null
+
   const rows = await db`
     SELECT v.*, c.slug as category_slug, c.label as category_label
     FROM vendors v
@@ -65,6 +83,8 @@ export async function getVendorByCategoryAndSlug(
 }
 
 export async function getVendorPhotos(vendorId: string): Promise<VendorPhoto[]> {
+  if (!db) return []
+
   const rows = await db`
     SELECT * FROM vendor_photos WHERE vendor_id = ${vendorId} ORDER BY sort_order ASC
   `
@@ -72,6 +92,8 @@ export async function getVendorPhotos(vendorId: string): Promise<VendorPhoto[]> 
 }
 
 export async function getVendorTags(vendorId: string): Promise<Tag[]> {
+  if (!db) return []
+
   const rows = await db`
     SELECT t.* FROM tags t
     JOIN vendor_tags vt ON t.id = vt.tag_id
@@ -81,6 +103,8 @@ export async function getVendorTags(vendorId: string): Promise<Tag[]> {
 }
 
 export async function getAllActiveVendorsForSitemap() {
+  if (!db) return []
+
   const rows = await db`
     SELECT v.slug, c.slug as cat_slug, v.updated_at
     FROM vendors v
@@ -91,6 +115,8 @@ export async function getAllActiveVendorsForSitemap() {
 }
 
 export async function getAdminVendors() {
+  if (!db) return []
+
   const rows = await db`
     SELECT
       v.id,
@@ -116,6 +142,8 @@ export async function getAdminVendors() {
 }
 
 export async function getVendorById(id: string): Promise<Vendor | null> {
+  if (!db) return null
+
   const rows = await db`
     SELECT v.*, c.slug as category_slug, c.label as category_label
     FROM vendors v
@@ -127,6 +155,8 @@ export async function getVendorById(id: string): Promise<Vendor | null> {
 }
 
 export async function getAdminCategories() {
+  if (!db) return []
+
   const rows = await db`
     SELECT
       c.*,
@@ -141,6 +171,8 @@ export async function getAdminCategories() {
 }
 
 export async function getCategoryById(id: string): Promise<Category | null> {
+  if (!db) return null
+
   const rows = await db`
     SELECT
       c.*,
@@ -164,7 +196,7 @@ type UpdateCategoryInput = {
 }
 
 export async function updateCategory(input: UpdateCategoryInput) {
-  await db`
+  await requireDb()`
     UPDATE categories
     SET
       slug = ${input.slug},
@@ -199,7 +231,7 @@ type UpdateVendorInput = {
 }
 
 export async function updateVendor(input: UpdateVendorInput) {
-  await db`
+  await requireDb()`
     UPDATE vendors
     SET
       category_id = ${input.category_id},

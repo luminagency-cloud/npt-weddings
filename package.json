@@ -6,7 +6,9 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "eslint"
+    "lint": "eslint",
+    "test": "node --experimental-strip-types --experimental-specifier-resolution=node lib/structured-data.test.ts",
+    "test:run": "node --experimental-strip-types --experimental-specifier-resolution=node lib/structured-data.test.ts"
   },
   "dependencies": {
     "@auth/core": "^0.41.2",

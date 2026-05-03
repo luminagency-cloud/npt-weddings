@@ -10,6 +10,13 @@ export const metadata: Metadata = {
 export default function ChooseVenuePage() {
   return (
     <SeoGuidePage
+      breadcrumbs={[
+        { href: "/", label: "Home" },
+        { href: "/planning", label: "Planning" },
+        { label: "Choose a Venue" },
+      ]}
+      description="A practical guide to choosing a Newport wedding venue based on guest flow, season, budget, and overall weekend style."
+      path="/planning/choose-a-venue"
       eyebrow="Planning Guide"
       title="Choosing a Newport wedding venue is really choosing the kind of weekend you want to host."
       intro="The right venue is not just the prettiest room or the best photo backdrop. In Newport, venue choice shapes lodging pressure, timing, transportation, weather risk, food service, and the social pace of the entire weekend."

@@ -1,11 +1,18 @@
 import type { Metadata } from "next"
 import { notFound } from "next/navigation"
 import Link from "next/link"
+import Image from "next/image"
+import { Breadcrumbs } from "@/components/breadcrumbs"
 import {
   getVendorByCategoryAndSlug,
   getVendorPhotos,
   getVendorTags,
 } from "@/lib/queries"
+import {
+  buildBreadcrumbList,
+  buildLocalBusinessJsonLd,
+  serializeJsonLd,
+} from "@/lib/structured-data"
 
 export const revalidate = 3600
 
@@ -43,24 +50,39 @@ export default async function VendorDetailPage({ params }: Props) {
     vendor.promo_expires_at &&
     new Date(vendor.promo_expires_at) > new Date()
   const primaryPhoto = photos.find((p) => p.is_primary) ?? photos[0] ?? null
+  const breadcrumbJsonLd = buildBreadcrumbList([
+    { name: "Home", path: "/" },
+    { name: "Wedding Directory", path: "/wedding" },
+    { name: vendor.category_label ?? "Category", path: `/wedding/${vendor.category_slug}` },
+    { name: vendor.name, path: `/wedding/${vendor.category_slug}/${vendor.slug}` },
+  ])
+  const vendorJsonLd = buildLocalBusinessJsonLd(vendor)
 
   return (
     <div>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: serializeJsonLd(breadcrumbJsonLd) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: serializeJsonLd(vendorJsonLd) }}
+      />
       {/* Page header band */}
       <section
         className="py-10 px-4"
         style={{ background: "linear-gradient(160deg, var(--primary) 0%, var(--primary-dark) 100%)" }}
       >
         <div className="max-w-4xl mx-auto">
-          <nav className="flex items-center gap-2 text-sm mb-4" style={{ color: "var(--gold-light)" }}>
-            <Link href="/wedding" className="hover:text-white transition-colors">Wedding Directory</Link>
-            <span className="opacity-40">/</span>
-            <Link href={`/wedding/${vendor.category_slug}`} className="hover:text-white transition-colors">
-              {vendor.category_label}
-            </Link>
-            <span className="opacity-40">/</span>
-            <span className="text-white/90">{vendor.name}</span>
-          </nav>
+          <Breadcrumbs
+            items={[
+              { href: "/", label: "Home" },
+              { href: "/wedding", label: "Wedding Directory" },
+              { href: `/wedding/${vendor.category_slug}`, label: vendor.category_label ?? "Category" },
+              { label: vendor.name },
+            ]}
+            className="mb-4 text-[var(--gold-light)]"
+          />
           <div className="flex items-start justify-between gap-4">
             <div>
               <div className="flex items-center gap-3 flex-wrap">
@@ -104,11 +126,14 @@ export default async function VendorDetailPage({ params }: Props) {
 
       <main className="max-w-4xl mx-auto px-4 py-10">
         {primaryPhoto && (
-          <div className="mb-8 rounded-2xl overflow-hidden bg-neutral-100 aspect-video shadow-sm">
-            <img
+          <div className="relative mb-8 overflow-hidden rounded-2xl bg-neutral-100 aspect-video shadow-sm">
+            <Image
               src={primaryPhoto.r2_url}
               alt={primaryPhoto.alt_text ?? vendor.name}
-              className="w-full h-full object-cover"
+              fill
+              unoptimized
+              sizes="(min-width: 1024px) 896px, 100vw"
+              className="object-cover"
             />
           </div>
         )}
@@ -235,11 +260,14 @@ export default async function VendorDetailPage({ params }: Props) {
             </h2>
             <div className="grid grid-cols-2 sm:grid-cols-3 gap-3">
               {photos.map((photo) => (
-                <div key={photo.id} className="rounded-xl overflow-hidden bg-neutral-100 aspect-square">
-                  <img
+                <div key={photo.id} className="relative overflow-hidden rounded-xl bg-neutral-100 aspect-square">
+                  <Image
                     src={photo.r2_url}
                     alt={photo.alt_text ?? vendor.name}
-                    className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
+                    fill
+                    unoptimized
+                    sizes="(min-width: 640px) 33vw, 50vw"
+                    className="object-cover transition-transform duration-300 hover:scale-105"
                   />
                 </div>
               ))}

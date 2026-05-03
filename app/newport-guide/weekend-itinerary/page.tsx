@@ -10,6 +10,13 @@ export const metadata: Metadata = {
 export default function WeekendItineraryPage() {
   return (
     <SeoGuidePage
+      breadcrumbs={[
+        { href: "/", label: "Home" },
+        { href: "/newport-guide", label: "Newport Guide" },
+        { label: "Weekend Itinerary" },
+      ]}
+      description="A Newport wedding weekend itinerary guide for structuring guest flow, dinner plans, celebration pacing, and the overall destination experience."
+      path="/newport-guide/weekend-itinerary"
       eyebrow="Local Guide"
       title="A strong Newport wedding weekend should feel curated, not overpacked."
       intro="The best Newport wedding weekends feel cohesive from arrival to farewell brunch. The goal is not to schedule every second. It is to create a pace that lets guests enjoy the destination without losing the shape of the event."

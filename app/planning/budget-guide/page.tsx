@@ -10,6 +10,13 @@ export const metadata: Metadata = {
 export default function BudgetGuidePage() {
   return (
     <SeoGuidePage
+      breadcrumbs={[
+        { href: "/", label: "Home" },
+        { href: "/planning", label: "Planning" },
+        { label: "Budget Guide" },
+      ]}
+      description="A practical Newport wedding budget guide covering venue format, staffing pressure, rentals, and guest-flow costs."
+      path="/planning/budget-guide"
       eyebrow="Planning Guide"
       title="A Newport wedding budget is usually decided by format before it is decided by line items."
       intro="Couples often start by comparing florals, stationery, or rentals. In Newport, the bigger budget swings usually happen earlier: venue format, service model, guest movement, and how much infrastructure the weekend needs."

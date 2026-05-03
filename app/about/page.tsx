@@ -1,4 +1,5 @@
 import type { Metadata } from "next"
+import Link from "next/link"
 
 export const metadata: Metadata = {
   title: "About",
@@ -30,6 +31,26 @@ export default function AboutPage() {
           That is why the first version stays narrow, curated, and useful instead
           of pretending to be comprehensive before it earns that right.
         </p>
+      </div>
+      <div className="mt-10 grid gap-4 md:grid-cols-2">
+        <Link
+          href="/planning"
+          className="rounded-[1.5rem] border border-[var(--color-line)] bg-white p-6 transition-colors hover:border-[var(--color-line-strong)]"
+        >
+          <h2 className="text-xl font-semibold text-neutral-900">Start with planning</h2>
+          <p className="mt-3 text-sm leading-6 text-[var(--color-muted)]">
+            Use the planning section if the venue format, season, or weekend structure is still unsettled.
+          </p>
+        </Link>
+        <Link
+          href="/wedding"
+          className="rounded-[1.5rem] border border-[var(--color-line)] bg-white p-6 transition-colors hover:border-[var(--color-line-strong)]"
+        >
+          <h2 className="text-xl font-semibold text-neutral-900">Browse the directory</h2>
+          <p className="mt-3 text-sm leading-6 text-[var(--color-muted)]">
+            Use the directory once the bigger decisions are clearer and the shortlist can stay tighter.
+          </p>
+        </Link>
       </div>
     </div>
   )

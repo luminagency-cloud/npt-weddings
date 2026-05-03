@@ -114,6 +114,25 @@ export default function PlanningPage() {
           next page based on the current uncertainty, not just the next keyword.
         </p>
       </section>
+
+      <section className="mt-14 grid gap-4 rounded-[2rem] border border-[var(--color-line)] bg-white p-7 md:grid-cols-[1.1fr_0.9fr] md:items-center">
+        <div>
+          <p className="font-sans text-[0.72rem] font-semibold uppercase tracking-[0.24em] text-[var(--color-gold-deep)]">
+            Best first click
+          </p>
+          <p className="mt-3 text-sm leading-6 text-[var(--color-muted)]">
+            If you are unsure where to start, use the venue guide first. It usually clarifies more of the wedding than any other early decision.
+          </p>
+        </div>
+        <div className="flex md:justify-end">
+          <Link
+            href="/planning/venues"
+            className="inline-flex rounded-full bg-[var(--color-ink)] px-5 py-3 text-sm font-medium text-white transition-colors hover:bg-[var(--color-gold-deep)]"
+          >
+            Go to venue planning
+          </Link>
+        </div>
+      </section>
     </div>
   )
 }

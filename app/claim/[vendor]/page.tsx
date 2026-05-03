@@ -9,6 +9,7 @@ type Props = {
 export default async function ClaimPage({ params }: Props) {
   const { vendor: vendorSlug } = await params
   const vendor = await getVendorBySlug(vendorSlug)
+  const claimContact = process.env.ADMIN_EMAIL
 
   if (!vendor) notFound()
 
@@ -57,9 +58,23 @@ export default async function ClaimPage({ params }: Props) {
         </ul>
       </div>
       <div className="rounded-xl bg-neutral-50 border border-neutral-200 p-6 text-center">
-        <p className="text-sm text-neutral-500">
-          Payments coming soon. Reach out directly to claim your listing early.
-        </p>
+        {claimContact ? (
+          <>
+            <p className="text-sm text-neutral-500">
+              Claim requests are currently reviewed manually while the full workflow is being finalized.
+            </p>
+            <a
+              href={`mailto:${claimContact}?subject=${encodeURIComponent(`Claim request for ${vendor.name}`)}`}
+              className="mt-4 inline-flex rounded-full bg-neutral-900 px-5 py-2.5 text-sm font-medium text-white hover:bg-neutral-700"
+            >
+              Request manual review
+            </a>
+          </>
+        ) : (
+          <p className="text-sm text-neutral-500">
+            Claim requests are currently being handled manually while the workflow is finalized.
+          </p>
+        )}
       </div>
     </main>
   )

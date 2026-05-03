@@ -155,7 +155,10 @@ export default async function CategoryPage({ params }: Props) {
 
         {vendors.length === 0 ? (
           <div className="py-20 text-center">
-            <p className="text-lg text-neutral-400">No vendors listed in this category yet.</p>
+            <p className="text-lg text-neutral-500">This category is not populated yet.</p>
+            <p className="mt-2 text-sm text-neutral-400">
+              Use the planning guides for now, then come back once more listings are live.
+            </p>
             <Link
               href="/wedding"
               className="mt-4 inline-block text-sm hover:underline"

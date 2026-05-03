@@ -143,6 +143,15 @@ export default function NewportGuidePage() {
           </Link>
         ))}
       </section>
+
+      <section className="mt-16 rounded-[2rem] border border-[var(--color-line)] bg-white p-7">
+        <p className="font-sans text-[0.72rem] font-semibold uppercase tracking-[0.24em] text-[var(--color-gold-deep)]">
+          Use this section when
+        </p>
+        <p className="mt-3 max-w-3xl text-sm leading-6 text-[var(--color-muted)]">
+          The venue direction is mostly real, but you still need better judgment on season, guest movement, dinner plans, and what makes the weekend feel coherent instead of pieced together.
+        </p>
+      </section>
     </div>
   )
 }

@@ -8,6 +8,7 @@ import {
   getVendorPhotos,
   getVendorTags,
 } from "@/lib/queries"
+import { getCategoryInsight } from "@/lib/directory-content"
 import {
   buildBreadcrumbList,
   buildLocalBusinessJsonLd,
@@ -50,6 +51,7 @@ export default async function VendorDetailPage({ params }: Props) {
     vendor.promo_expires_at &&
     new Date(vendor.promo_expires_at) > new Date()
   const primaryPhoto = photos.find((p) => p.is_primary) ?? photos[0] ?? null
+  const categoryInsight = getCategoryInsight(vendor.category_slug ?? "")
   const breadcrumbJsonLd = buildBreadcrumbList([
     { name: "Home", path: "/" },
     { name: "Wedding Directory", path: "/wedding" },
@@ -247,6 +249,27 @@ export default async function VendorDetailPage({ params }: Props) {
             >
               Back to all {vendor.category_label?.toLowerCase()} →
             </Link>
+          </div>
+        </div>
+
+        <div className="mb-10 grid gap-4 md:grid-cols-3">
+          {categoryInsight.relatedCategories.map((link) => (
+            <Link
+              key={link.href}
+              href={link.href}
+              className="rounded-[1.5rem] border border-[var(--color-line)] bg-[var(--color-cream-strong)] p-5 transition-colors hover:border-[var(--color-line-strong)]"
+            >
+              <p className="text-xs font-semibold uppercase tracking-[0.2em]" style={{ color: "var(--gold)" }}>
+                {link.label}
+              </p>
+              <p className="mt-3 text-sm leading-6 text-neutral-600">{link.description}</p>
+            </Link>
+          ))}
+          <div className="rounded-[1.5rem] border border-[var(--color-line)] bg-white p-5">
+            <p className="text-xs font-semibold uppercase tracking-[0.2em]" style={{ color: "var(--gold)" }}>
+              Decision lens
+            </p>
+            <p className="mt-3 text-sm leading-6 text-neutral-600">{categoryInsight.decisionLens}</p>
           </div>
         </div>
 

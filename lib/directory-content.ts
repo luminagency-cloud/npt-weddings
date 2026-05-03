@@ -4,10 +4,16 @@ type DirectoryGuideCard = {
   label: string
 }
 
+type CategoryCardContent = {
+  bestFor: string
+  planningHint: string
+}
+
 type CategoryInsight = {
   decisionLens: string
   intro: string
   nextSteps: DirectoryGuideCard[]
+  relatedCategories: DirectoryGuideCard[]
   shortlistPrompt: string
 }
 
@@ -28,6 +34,18 @@ const defaultInsight: CategoryInsight = {
       href: "/planning/timeline",
       label: "Sequence decisions",
       description: "Use the timeline if the category is arriving too early in the process.",
+    },
+  ],
+  relatedCategories: [
+    {
+      href: "/wedding/venues",
+      label: "Review venues",
+      description: "Use venue fit to narrow the rest of the shortlist.",
+    },
+    {
+      href: "/wedding/planners",
+      label: "Check planners",
+      description: "Planner fit matters when the weekend is logistically heavy.",
     },
   ],
 }
@@ -52,6 +70,18 @@ const categoryInsights: Record<string, CategoryInsight> = {
         description: "Venue format usually decides the budget faster than line items do.",
       },
     ],
+    relatedCategories: [
+      {
+        href: "/wedding/planners",
+        label: "Browse planners",
+        description: "Useful once the venue format starts demanding coordination help.",
+      },
+      {
+        href: "/wedding/photographers",
+        label: "Browse photographers",
+        description: "Photography choices get clearer once the venue tone is real.",
+      },
+    ],
   },
   photographers: {
     intro:
@@ -70,6 +100,18 @@ const categoryInsights: Record<string, CategoryInsight> = {
         href: "/newport-guide/weekend-itinerary",
         label: "Clarify the weekend shape",
         description: "The more destination-heavy the weekend, the more pacing matters.",
+      },
+    ],
+    relatedCategories: [
+      {
+        href: "/wedding/planners",
+        label: "Compare planners",
+        description: "Planner style often affects photography flow and timeline discipline.",
+      },
+      {
+        href: "/wedding/venues",
+        label: "Revisit venues",
+        description: "Venue layout changes the light, movement, and shot rhythm more than most couples expect.",
       },
     ],
   },
@@ -92,9 +134,45 @@ const categoryInsights: Record<string, CategoryInsight> = {
         description: "Know whether the wedding needs custom production or cleaner built-in service.",
       },
     ],
+    relatedCategories: [
+      {
+        href: "/wedding/venues",
+        label: "Back to venues",
+        description: "Planner fit depends on whether the venue is full-service or custom-build.",
+      },
+      {
+        href: "/wedding/caterers",
+        label: "Check caterers",
+        description: "Food service complexity often tells you how much planner support you really need.",
+      },
+    ],
+  },
+}
+
+const defaultCategoryCardContent: CategoryCardContent = {
+  bestFor: "Best once the venue direction and weekend tone are already clearer.",
+  planningHint: "Use this category to tighten a shortlist, not to define the whole wedding.",
+}
+
+const categoryCardContent: Record<string, CategoryCardContent> = {
+  venues: {
+    bestFor: "Best for locking the format, guest flow, and weekend tone before anything else.",
+    planningHint: "Start here if the wedding still feels broad or undefined.",
+  },
+  photographers: {
+    bestFor: "Best once the timeline, venue mood, and guest rhythm are taking shape.",
+    planningHint: "Use this category after the wedding format stops drifting.",
+  },
+  planners: {
+    bestFor: "Best when the weekend has enough complexity that coordination style matters.",
+    planningHint: "Planner fit becomes clearer when the venue and budget shape are visible.",
   },
 }
 
 export function getCategoryInsight(categorySlug: string): CategoryInsight {
   return categoryInsights[categorySlug] ?? defaultInsight
+}
+
+export function getCategoryCardContent(categorySlug: string) {
+  return categoryCardContent[categorySlug] ?? defaultCategoryCardContent
 }

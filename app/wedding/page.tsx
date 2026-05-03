@@ -1,6 +1,7 @@
 import type { Metadata } from "next"
 import Link from "next/link"
 import { Breadcrumbs } from "@/components/breadcrumbs"
+import { getCategoryCardContent } from "@/lib/directory-content"
 import { getCategories } from "@/lib/queries"
 import {
   buildBreadcrumbList,
@@ -158,31 +159,36 @@ export default async function WeddingDirectoryPage() {
             <Link
               key={cat.id}
               href={`/wedding/${cat.slug}`}
-              className="group flex flex-col items-center rounded-2xl p-6 text-center transition-all duration-200 hover:-translate-y-1 hover:shadow-lg"
+              className="group flex flex-col rounded-2xl p-6 text-left transition-all duration-200 hover:-translate-y-1 hover:shadow-lg"
               style={{
                 background: "var(--card-bg)",
                 border: "1px solid var(--border)",
               }}
             >
-              <span className="mb-3 select-none text-3xl" aria-hidden>
-                {CATEGORY_ICONS[cat.slug] ?? "✦"}
-              </span>
-              <h3
-                className="text-sm font-semibold text-neutral-800 sm:text-base"
-                style={{ fontFamily: "var(--font-playfair)" }}
-              >
-                {cat.label}
-              </h3>
-              {cat.description && (
-                <p className="mt-1 line-clamp-2 text-xs leading-relaxed text-neutral-400">
-                  {cat.description}
-                </p>
-              )}
-              <span className="mt-3 text-[0.65rem] font-semibold uppercase tracking-[0.2em] text-neutral-400">
-                {cat.vendor_count} {cat.vendor_count === 1 ? "listing" : "listings"}
-              </span>
+              <div className="flex items-start justify-between gap-4">
+                <div>
+                  <span className="mb-3 block select-none text-3xl" aria-hidden>
+                    {CATEGORY_ICONS[cat.slug] ?? "✦"}
+                  </span>
+                  <h3
+                    className="text-base font-semibold text-neutral-800"
+                    style={{ fontFamily: "var(--font-playfair)" }}
+                  >
+                    {cat.label}
+                  </h3>
+                </div>
+                <span className="rounded-full bg-white px-3 py-1 text-[0.65rem] font-semibold uppercase tracking-[0.2em] text-neutral-400">
+                  {cat.vendor_count} {cat.vendor_count === 1 ? "listing" : "listings"}
+                </span>
+              </div>
+              <p className="mt-3 text-sm leading-6 text-neutral-500">
+                {getCategoryCardContent(cat.slug).bestFor}
+              </p>
+              <p className="mt-3 text-xs leading-5 text-neutral-400">
+                {cat.description ?? getCategoryCardContent(cat.slug).planningHint}
+              </p>
               <span
-                className="mt-2 text-xs font-medium opacity-0 transition-opacity group-hover:opacity-100"
+                className="mt-5 text-xs font-medium opacity-0 transition-opacity group-hover:opacity-100"
                 style={{ color: "var(--gold)" }}
               >
                 Browse →

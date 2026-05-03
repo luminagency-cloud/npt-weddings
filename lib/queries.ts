@@ -208,6 +208,18 @@ export async function updateCategory(input: UpdateCategoryInput) {
   `
 }
 
+type CreateCategoryInput = Omit<UpdateCategoryInput, "id">
+
+export async function createCategory(input: CreateCategoryInput) {
+  const rows = await requireDb()`
+    INSERT INTO categories (slug, label, description, sort_order, active)
+    VALUES (${input.slug}, ${input.label}, ${input.description}, ${input.sort_order}, ${input.active})
+    RETURNING id
+  `
+
+  return (rows[0] as { id: string }).id
+}
+
 type UpdateVendorInput = {
   id: string
   category_id: string
@@ -255,4 +267,54 @@ export async function updateVendor(input: UpdateVendorInput) {
       updated_at = NOW()
     WHERE id = ${input.id}
   `
+}
+
+type CreateVendorInput = Omit<UpdateVendorInput, "id">
+
+export async function createVendor(input: CreateVendorInput) {
+  const rows = await requireDb()`
+    INSERT INTO vendors (
+      category_id,
+      name,
+      slug,
+      address,
+      city,
+      state,
+      zip,
+      phone,
+      website,
+      email,
+      description,
+      description_override,
+      tier,
+      verified,
+      active,
+      promo_label,
+      meta_title,
+      meta_description
+    )
+    VALUES (
+      ${input.category_id},
+      ${input.name},
+      ${input.slug},
+      ${input.address},
+      ${input.city},
+      ${input.state},
+      ${input.zip},
+      ${input.phone},
+      ${input.website},
+      ${input.email},
+      ${input.description},
+      ${input.description_override},
+      ${input.tier},
+      ${input.verified},
+      ${input.active},
+      ${input.promo_label},
+      ${input.meta_title},
+      ${input.meta_description}
+    )
+    RETURNING id
+  `
+
+  return (rows[0] as { id: string }).id
 }

@@ -1,5 +1,7 @@
 import assert from "node:assert/strict"
 import {
+  createCategory,
+  createVendor,
   getAdminCategories,
   getAdminVendors,
   getCategories,
@@ -94,6 +96,18 @@ photographers,Example Studio,,hello@example.com,,Middletown,RI,"Editorial photog
 
   await assert.rejects(
     () =>
+      createCategory({
+        slug: "venues",
+        label: "Venues",
+        description: null,
+        sort_order: 0,
+        active: true,
+      }),
+    /DATABASE_URL environment variable is not set/
+  )
+
+  await assert.rejects(
+    () =>
       updateCategory({
         id: "category-id",
         slug: "venues",
@@ -101,6 +115,31 @@ photographers,Example Studio,,hello@example.com,,Middletown,RI,"Editorial photog
         description: null,
         sort_order: 0,
         active: true,
+      }),
+    /DATABASE_URL environment variable is not set/
+  )
+
+  await assert.rejects(
+    () =>
+      createVendor({
+        category_id: "category-id",
+        name: "Vendor",
+        slug: "vendor",
+        address: null,
+        city: "Newport",
+        state: "RI",
+        zip: null,
+        phone: null,
+        website: null,
+        email: null,
+        description: null,
+        description_override: null,
+        tier: "basic",
+        verified: false,
+        active: true,
+        promo_label: null,
+        meta_title: null,
+        meta_description: null,
       }),
     /DATABASE_URL environment variable is not set/
   )

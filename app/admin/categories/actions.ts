@@ -2,7 +2,7 @@
 
 import { revalidatePath } from "next/cache"
 import { redirect } from "next/navigation"
-import { updateCategory } from "@/lib/queries"
+import { createCategory, updateCategory } from "@/lib/queries"
 
 function getString(formData: FormData, key: string) {
   const value = formData.get(key)
@@ -36,6 +36,30 @@ export async function saveCategoryAction(formData: FormData) {
 
   revalidatePath("/wedding")
   revalidatePath(`/wedding/${slug}`)
+  revalidatePath("/admin/categories")
+  redirect(`/admin/categories/${id}?saved=1`)
+}
+
+export async function createCategoryAction(formData: FormData) {
+  const slug = getString(formData, "slug")
+  const label = getString(formData, "label")
+  const sortOrderRaw = getString(formData, "sort_order")
+
+  if (!slug || !label) {
+    throw new Error("Missing required category fields")
+  }
+
+  const sort_order = Number.parseInt(sortOrderRaw || "0", 10)
+
+  const id = await createCategory({
+    slug,
+    label,
+    description: nullable(getString(formData, "description")),
+    sort_order: Number.isNaN(sort_order) ? 0 : sort_order,
+    active: formData.get("active") === "on",
+  })
+
+  revalidatePath("/wedding")
   revalidatePath("/admin/categories")
   redirect(`/admin/categories/${id}?saved=1`)
 }

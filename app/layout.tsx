@@ -1,6 +1,8 @@
 import type { Metadata } from "next"
 import { Geist, Playfair_Display } from "next/font/google"
 import Link from "next/link"
+import Script from "next/script"
+import { siteConfig } from "@/lib/site"
 import "./globals.css"
 
 const geist = Geist({
@@ -15,12 +17,30 @@ const playfair = Playfair_Display({
 })
 
 export const metadata: Metadata = {
+  metadataBase: new URL(siteConfig.siteUrl),
   title: {
-    default: "Newport Weddings",
+    default: siteConfig.name,
     template: "%s | Newport Weddings",
   },
-  description:
-    "A Newport wedding planning site with local venue ideas, planning guides, and a curated vendor directory.",
+  description: siteConfig.description,
+  alternates: {
+    canonical: "/",
+  },
+  openGraph: {
+    type: "website",
+    url: siteConfig.siteUrl,
+    siteName: siteConfig.name,
+    title: siteConfig.name,
+    description: siteConfig.description,
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: siteConfig.name,
+    description: siteConfig.description,
+  },
+  verification: siteConfig.googleVerification
+    ? { google: siteConfig.googleVerification }
+    : undefined,
 }
 
 const navItems = [
@@ -37,9 +57,53 @@ export default function RootLayout({
 }: {
   children: React.ReactNode
 }) {
+  const organizationJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    name: siteConfig.name,
+    url: siteConfig.siteUrl,
+    description: siteConfig.description,
+  }
+
+  const websiteJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    name: siteConfig.name,
+    url: siteConfig.siteUrl,
+    description: siteConfig.description,
+  }
+
   return (
     <html lang="en" className={`${geist.variable} ${playfair.variable} h-full antialiased`}>
       <body className="min-h-full" style={{ background: "var(--background)", color: "var(--foreground)" }}>
+        {siteConfig.gaMeasurementId && (
+          <>
+            <Script
+              src={`https://www.googletagmanager.com/gtag/js?id=${siteConfig.gaMeasurementId}`}
+              strategy="afterInteractive"
+            />
+            <Script id="google-analytics" strategy="afterInteractive">
+              {`
+                window.dataLayer = window.dataLayer || [];
+                function gtag(){dataLayer.push(arguments);}
+                gtag('js', new Date());
+                gtag('config', '${siteConfig.gaMeasurementId}');
+              `}
+            </Script>
+          </>
+        )}
+        <Script
+          id="organization-jsonld"
+          type="application/ld+json"
+          strategy="afterInteractive"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationJsonLd) }}
+        />
+        <Script
+          id="website-jsonld"
+          type="application/ld+json"
+          strategy="afterInteractive"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteJsonLd) }}
+        />
         <div className="min-h-full flex flex-col">
           <header className="sticky top-0 z-30 border-b border-[var(--border)] bg-[color:color-mix(in_oklab,var(--background)_88%,white)]/90 backdrop-blur">
             <div className="mx-auto flex w-full max-w-6xl items-center justify-between gap-6 px-4 py-4 sm:px-6">

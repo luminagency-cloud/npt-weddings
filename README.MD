@@ -118,6 +118,8 @@ copy .env.example .env.local
 
 Optional for later phases:
 
+- `NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION`
+- `NEXT_PUBLIC_GA_MEASUREMENT_ID`
 - `STRIPE_SECRET_KEY`
 - `STRIPE_WEBHOOK_SECRET`
 - `CLOUDFLARE_R2_ACCOUNT_ID`
@@ -205,6 +207,7 @@ Before deployment:
 - verify mobile layout
 - check metadata and sitemap behavior
 - make sure launch nav only includes real pages
+- connect Google Analytics and Search Console when ready
 
 ## Notes
 

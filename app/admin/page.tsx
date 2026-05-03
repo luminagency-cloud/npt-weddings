@@ -31,6 +31,13 @@ export default async function AdminPage() {
           <h2 className="font-semibold text-neutral-900">View Directory</h2>
           <p className="text-sm text-neutral-500 mt-1">See the public-facing wedding directory</p>
         </Link>
+        <Link
+          href="/admin/import"
+          className="block rounded-xl border border-neutral-200 p-5 hover:border-neutral-400 transition-all"
+        >
+          <h2 className="font-semibold text-neutral-900">Prep Vendor Imports</h2>
+          <p className="text-sm text-neutral-500 mt-1">Use the CSV format and field rules for new lead sheets</p>
+        </Link>
       </div>
       <p className="mt-8 text-sm text-neutral-400">
         This is still a lean internal admin, but vendor editing now lives here instead of the database console.

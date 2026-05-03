@@ -15,6 +15,12 @@ import {
   updateVendor,
 } from "./queries.ts"
 import {
+  parseVendorImportCsv,
+  slugifyVendorName,
+  toVendorImportPreview,
+  validateVendorImportRows,
+} from "./vendor-import.ts"
+import {
   absoluteUrl,
   buildBreadcrumbList,
   buildCollectionPageJsonLd,
@@ -53,6 +59,25 @@ async function run() {
     "@type": "ListItem",
     position: 1,
     url: "https://npt-weddings.vercel.app/wedding/venues/ocean-house",
+  })
+
+  const importRows = parseVendorImportCsv(`category_slug,name,website,email,phone,city,state,description
+venues,Castle Hill Inn,https://castlehillinn.com,,(401) 555-0100,Newport,RI,"Waterfront wedding venue"
+photographers,Example Studio,,hello@example.com,,Middletown,RI,"Editorial photography"`)
+
+  assert.equal(importRows.length, 2)
+  assert.equal(slugifyVendorName("Castle Hill Inn"), "castle-hill-inn")
+  assert.deepEqual(validateVendorImportRows(importRows), [])
+  assert.deepEqual(toVendorImportPreview(importRows)[0], {
+    categorySlug: "venues",
+    name: "Castle Hill Inn",
+    slug: "castle-hill-inn",
+    website: "https://castlehillinn.com",
+    email: null,
+    phone: "(401) 555-0100",
+    city: "Newport",
+    state: "RI",
+    description: "Waterfront wedding venue",
   })
 
   assert.deepEqual(await getCategories(), [])

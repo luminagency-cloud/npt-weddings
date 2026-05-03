@@ -160,9 +160,9 @@ export default function RootLayout({
                   Married in Newport
                 </p>
                 <p className="mt-3 text-sm leading-6">
-                  A Newport wedding planning guide for couples who want stronger
-                  venue judgment, better local context, and a cleaner path into
-                  the right vendors.
+                  Newport wedding ideas, venue guidance, and local planning help
+                  for couples who want a celebration that feels beautiful, easy,
+                  and unmistakably coastal.
                 </p>
               </div>
               <div className="flex flex-wrap gap-x-5 gap-y-2 text-sm text-white/70">

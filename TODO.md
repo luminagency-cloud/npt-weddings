@@ -362,6 +362,8 @@ Goal: make the product smarter for couples without depending on vendor participa
 - Venue comparison workflow
 - Shortlist or favorites system
 - Inquiry tracker or planning notes
+- Guest list and RSVP tracking
+- Seating chart or event layout helper
 
 ### Smart features worth building early
 
@@ -369,6 +371,8 @@ Goal: make the product smarter for couples without depending on vendor participa
 - Suggested next steps based on what a user has already viewed
 - Related content recommendations between guides, venues, and categories
 - Simple intake flow that turns user answers into a planning path
+- Save-and-compare workflows for venues and vendors
+- Style or vibe-based vendor recommendations rooted in venue choice and wedding format
 
 ### Defer for now
 
@@ -376,6 +380,58 @@ Goal: make the product smarter for couples without depending on vendor participa
 - Automated vendor onboarding
 - Paid placement logic
 - Subscription management
+- Full wedding website builder
+- Registry platform
+
+## Competitive Ideas For Future Review
+
+Goal: capture strong product patterns seen on larger wedding platforms without turning the MVP into a generic clone.
+
+### Patterns worth borrowing from WeddingWire and The Knot
+
+- Faster homepage routing into real actions:
+  - start with venues
+  - browse vendors by category
+  - jump into planning help without reading long copy first
+- More visual browsing:
+  - category tiles
+  - venue-style pathways
+  - mood or vibe-led entry points
+- Stronger save/progress mechanics:
+  - favorites
+  - shortlist comparison
+  - recently viewed vendors
+  - saved planning pages
+- Guided planning flows:
+  - checklist
+  - budget tracker
+  - guest list
+  - seating chart
+  - timeline builder
+- Personalized recommendations:
+  - based on venue style
+  - guest count
+  - budget band
+  - season
+- Trust-building depth:
+  - more reviews
+  - more photos
+  - clearer pricing/availability signals
+  - stronger social proof around popular categories
+- Inspiration layers beyond directory browsing:
+  - real wedding features
+  - style boards
+  - example weekend plans
+  - curated vendor collections
+
+### Recommended order for future review
+
+1. Favorites, shortlist, and compare flows
+2. Personalized planning checklist
+3. Guest list and RSVP workflow
+4. Budget helper tied to venue style and guest count
+5. Style-led inspiration collections and real wedding stories
+6. Venue/vendor recommendation engine
 
 ## Phase 4: Content and SEO System
 

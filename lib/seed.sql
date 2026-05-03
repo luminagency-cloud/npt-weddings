@@ -6,7 +6,11 @@ INSERT INTO categories (slug, label, description, sort_order) VALUES
   ('jewelers', 'Jewelers', 'Engagement rings and wedding bands in Newport County', 5),
   ('music', 'Music & Entertainment', 'Bands, DJs, and entertainment for Newport weddings', 6),
   ('hair-makeup', 'Hair & Makeup', 'Bridal hair and makeup artists in Newport', 7),
-  ('officiants', 'Officiants', 'Wedding officiants and ceremony services in Newport', 8);
+  ('officiants', 'Officiants', 'Wedding officiants and ceremony services in Newport', 8),
+  ('planners', 'Planners', 'Wedding planners and coordinators serving Newport and surrounding areas', 9),
+  ('videographers', 'Videographers', 'Wedding videographers and filmmakers serving Newport and surrounding areas', 10),
+  ('transportation', 'Transportation', 'Wedding transportation, guest shuttles, and trolleys serving Newport', 11),
+  ('bakers', 'Bakers', 'Wedding cake designers and bakeries serving Newport and surrounding areas', 12);
 
 INSERT INTO vendors (category_id, slug, name, address, city, state, zip, phone, website, description, tier) VALUES
   ((SELECT id FROM categories WHERE slug = 'venues'), 'rosecliff-mansion-newport', 'Rosecliff Mansion', '548 Bellevue Ave', 'Newport', 'RI', '02840', '(401) 847-1000', 'https://www.newportmansions.org/rosecliff', 'One of Newport''s most iconic Gilded Age mansions. The grand ballroom and terraced gardens make Rosecliff a breathtaking backdrop for weddings.', 'basic'),

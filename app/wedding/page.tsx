@@ -21,6 +21,7 @@ const CATEGORY_ICONS: Record<string, string> = {
   photographers: "📷",
   florists: "💐",
   caterers: "🍽️",
+  bakers: "🎂",
   jewelers: "💍",
   music: "🎶",
   "hair-makeup": "✨",

@@ -5,7 +5,7 @@ export const siteConfig = {
     "Married in Newport is a couple-first wedding planning guide for Newport with venue guidance, local perspective, and a curated directory built around real Newport wedding search intent.",
   siteUrl: process.env.NEXT_PUBLIC_SITE_URL ?? "https://npt-weddings.vercel.app",
   googleVerification: process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION,
-  gaMeasurementId: process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID,
+  gaMeasurementId: process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID ?? "G-LMF0G7XZ11",
 } as const
 
 export const staticRoutes = [

@@ -18,13 +18,13 @@ const planningPages = [
     title: "Wedding Timeline",
     description:
       "A practical order for venue, vendors, guest flow, and the deadlines that actually matter.",
-    href: "#timeline",
+    href: "/planning/timeline",
   },
   {
     title: "Budget Mindset",
     description:
       "A plain-English view of how venue choices affect food, rentals, staffing, and logistics in Newport.",
-    href: "#budget",
+    href: "/planning/budget-guide",
   },
 ]
 
@@ -60,32 +60,58 @@ export default function PlanningPage() {
         ))}
       </div>
 
-      <section id="timeline" className="mt-16 grid gap-8 border-t border-[var(--color-line)] pt-12 lg:grid-cols-2">
+      <section className="mt-16 grid gap-8 border-t border-[var(--color-line)] pt-12 lg:grid-cols-2">
         <div>
           <h2 className="text-3xl font-semibold tracking-[-0.03em]">
-            Suggested planning order
-          </h2>
-        </div>
-        <ol className="space-y-5 text-sm leading-6 text-[var(--color-muted)]">
-          <li>1. Decide what kind of Newport experience you want before browsing vendors too hard.</li>
-          <li>2. Set a real guest-count range and budget guardrails early.</li>
-          <li>3. Shortlist venues before getting lost in decorative details.</li>
-          <li>4. Once the venue direction is clearer, lock planning, photography, and food priorities.</li>
-          <li>5. Use the directory to fill gaps, not to define the whole event from scratch.</li>
-        </ol>
-      </section>
-
-      <section id="budget" className="mt-14 grid gap-8 lg:grid-cols-[0.8fr_1.2fr]">
-        <div>
-          <h2 className="text-3xl font-semibold tracking-[-0.03em]">
-            Budget starts with format
+            The planning section should create better decisions, not more noise.
           </h2>
         </div>
         <p className="text-sm leading-7 text-[var(--color-muted)]">
-          In Newport, venue format often determines the rest of the budget. A
-          full-service property, a private estate, and a waterfront setup can
-          all produce a strong wedding, but they create very different staffing,
-          rental, transport, and guest-flow requirements. Start there.
+          These guides are meant to reduce drift. The strongest Newport weddings
+          usually come from getting venue, budget, guest experience, and
+          weekend structure right early rather than trying to solve every
+          decision at once.
+        </p>
+      </section>
+
+      <section className="mt-14 grid gap-4 md:grid-cols-3">
+        <Link
+          href="/planning/choose-a-venue"
+          className="rounded-[1.75rem] border border-[var(--color-line)] bg-white p-6 hover:border-[var(--color-line-strong)]"
+        >
+          <h2 className="text-xl font-semibold">How to Choose a Venue</h2>
+          <p className="mt-3 text-sm leading-6 text-[var(--color-muted)]">
+            A practical way to compare venue fit, weekend format, and guest experience.
+          </p>
+        </Link>
+        <Link
+          href="/planning/budget-guide"
+          className="rounded-[1.75rem] border border-[var(--color-line)] bg-white p-6 hover:border-[var(--color-line-strong)]"
+        >
+          <h2 className="text-xl font-semibold">Budget Guide</h2>
+          <p className="mt-3 text-sm leading-6 text-[var(--color-muted)]">
+            Understand how venue format changes the whole cost structure.
+          </p>
+        </Link>
+        <Link
+          href="/planning/timeline"
+          className="rounded-[1.75rem] border border-[var(--color-line)] bg-white p-6 hover:border-[var(--color-line-strong)]"
+        >
+          <h2 className="text-xl font-semibold">Timeline</h2>
+          <p className="mt-3 text-sm leading-6 text-[var(--color-muted)]">
+            Use a better sequence so the early decisions actually reduce complexity.
+          </p>
+        </Link>
+      </section>
+
+      <section className="mt-14 grid gap-8 lg:grid-cols-[0.8fr_1.2fr]">
+        <div>
+          <h2 className="text-3xl font-semibold tracking-[-0.03em]">Where to start</h2>
+        </div>
+        <p className="text-sm leading-7 text-[var(--color-muted)]">
+          If the couple is early, start with venues. If the venue direction is
+          already set, move to budget and timeline. The point is to choose the
+          next page based on the current uncertainty, not just the next keyword.
         </p>
       </section>
     </div>

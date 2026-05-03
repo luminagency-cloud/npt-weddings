@@ -404,6 +404,465 @@ Goal: create scalable organic growth around local wedding intent.
 - Newport wedding weekend itinerary
 - Rhode Island wedding budget guide
 
+## SEO Execution Plan
+
+Goal: build a search-driven site that can rank across high-intent Newport wedding queries without turning into a pile of thin pages.
+
+### Principle
+
+- SEO pages should exist because they answer a real search intent, not because a template can generate them.
+- Newport is competitive enough that every page needs a distinct angle, not just a keyword swap.
+- The directory should support SEO, but the site cannot rely on directory pages alone.
+
+### Layer 1: Technical SEO Foundation
+
+Goal: make the site crawlable, indexable, and measurable.
+
+#### Must have
+
+- Correct metadata defaults
+- Canonical support
+- Real sitemap coverage
+- `robots.txt`
+- Google Search Console verification
+- Google Analytics / GA4
+- Consistent internal linking
+
+#### Current status
+
+- Metadata base is in place
+- Sitemap exists
+- `robots.txt` exists
+- GA/Search Console hooks exist
+
+#### Still to do
+
+- Add breadcrumb structured data
+- Add page-type structured data where appropriate
+- Set final production domain everywhere
+- Submit sitemap in Search Console
+- Connect the site to Google Analytics and Search Console accounts
+
+### Layer 2: Core Indexable Page Types
+
+Goal: define the page system that should carry search demand.
+
+#### Directory/entity pages
+
+- category pages
+- vendor pages
+
+#### Editorial pages
+
+- planning guides
+- local Newport guidance
+- budget/timeline/help pages
+
+#### Hybrid SEO landing pages
+
+- category + style
+- category + venue type
+- planning topic + Newport
+- venue intent pages
+
+### Layer 3: Priority SEO Page Program
+
+Goal: build the first serious search inventory by hand before scaling templates.
+
+#### First-tier pages
+
+- Newport wedding venues
+- small wedding venues in Newport
+- Newport wedding budget guide
+- best time of year for a Newport wedding
+- Newport wedding weekend itinerary
+- Newport wedding photographers
+- Newport wedding planners
+- Newport wedding florists
+
+#### Second-tier pages
+
+- waterfront wedding venues in Newport
+- Newport rehearsal dinner ideas
+- Newport wedding timeline
+- how to choose a Newport wedding venue
+- luxury Newport wedding venues
+- intimate wedding venues in Newport
+
+### Layer 3.5: Content Planning System
+
+Goal: decide what to publish, in what order, and why, instead of just writing pages ad hoc.
+
+#### Planning inputs
+
+- search intent
+- local relevance
+- conversion value
+- internal linking value
+- content difficulty
+- current inventory depth
+
+#### Planning buckets
+
+- money pages
+  - category and vendor-adjacent pages that help commercial intent
+- authority pages
+  - deep guides that build trust and topical authority
+- bridge pages
+  - pages that connect editorial search intent to directory exploration
+- local signal pages
+  - pages that reinforce Newport-specific knowledge and relevance
+
+#### Content planning workflow
+
+1. Identify a real query cluster.
+2. Decide whether the right page type is category, guide, hybrid landing page, or FAQ.
+3. Define the unique angle before drafting.
+4. Map the internal links that page should create.
+5. Publish only when it strengthens the overall site graph.
+
+#### First content clusters to plan
+
+- venues
+  - luxury
+  - waterfront
+  - intimate
+  - small wedding
+- planning
+  - timeline
+  - budget
+  - venue selection
+- local Newport
+  - best time of year
+  - wedding weekend itinerary
+  - rehearsal dinner ideas
+
+### Layer 4: Semantic Content Model
+
+Goal: support scale without hardcoding every page forever.
+
+#### Content types we will likely need
+
+- `guides`
+  - title
+  - slug
+  - summary
+  - body
+  - meta title
+  - meta description
+  - publish status
+- `seo_pages`
+  - page type
+  - slug
+  - title
+  - intro
+  - section blocks
+  - faq block
+  - status
+- `faqs`
+  - question
+  - answer
+  - related page/category
+
+#### Taxonomy we will likely need
+
+- venue type
+- wedding style
+- guest-count fit
+- price band
+- area / neighborhood intent
+- seasonal relevance
+
+### Layer 5: Internal Linking Strategy
+
+Goal: make the site easier for both users and search engines to navigate by intent.
+
+#### Linking rules
+
+- homepage should link to primary planning and venue pages
+- planning pages should link into relevant categories
+- category pages should link back to planning guides
+- guide pages should link to relevant directory categories and selected vendors
+- vendor pages should link up to categories and related planning context
+
+### Layer 6: SEO Guardrails
+
+Goal: prevent scale from creating junk.
+
+#### Do not do
+
+- do not auto-publish empty combinations
+- do not create pages with swapped keywords and no distinct substance
+- do not index categories with no real depth
+- do not ship AI-assisted pages without editorial cleanup
+
+#### Standard for publishing
+
+- page has a real angle
+- page has enough unique content to stand alone
+- page links into the rest of the site intentionally
+- page supports either user decision-making or strong search intent, ideally both
+
+### Immediate SEO Backlog
+
+These are the next concrete SEO tasks:
+
+1. Add breadcrumb structured data.
+2. Add page-type structured data to category/vendor/guide pages.
+3. Set and verify GA4.
+4. Set and verify Google Search Console.
+5. Submit sitemap to Search Console.
+6. Build the first 5 true SEO landing pages manually.
+7. Add category attributes needed for style/type intent pages.
+8. Design the future `guides` / `seo_pages` content model.
+
+### SEO Build Sequence
+
+Use this order:
+
+1. Technical foundation
+2. First manual search pages
+3. Better internal linking
+4. Content model for scale
+5. Template-driven expansion with editorial review
+
+## SEO Publishing Roadmap
+
+Goal: convert the SEO/content strategy into a real page-production sequence.
+
+### First Query Clusters
+
+These are the first clusters worth building around:
+
+#### Cluster 1: Newport wedding venues
+
+Why first:
+
+- highest commercial intent
+- strongest local search demand
+- natural bridge between editorial and directory
+
+Core intents:
+
+- newport wedding venues
+- small wedding venues in Newport
+- luxury Newport wedding venues
+- waterfront wedding venues in Newport
+- intimate wedding venues in Newport
+
+#### Cluster 2: Planning a Newport wedding
+
+Why next:
+
+- broad informational intent
+- strong authority-building content
+- high internal-link value into venues and vendors
+
+Core intents:
+
+- Newport wedding timeline
+- Newport wedding budget
+- how to plan a Newport wedding
+- how to choose a Newport wedding venue
+
+#### Cluster 3: Newport wedding weekend
+
+Why next:
+
+- highly local
+- strong differentiation
+- reinforces destination-wedding angle
+
+Core intents:
+
+- Newport wedding weekend itinerary
+- best time of year for a Newport wedding
+- Newport rehearsal dinner ideas
+
+#### Cluster 4: Category-commercial pages
+
+Why after the above:
+
+- supports directory depth
+- converts category demand once editorial foundation is stronger
+
+Core intents:
+
+- Newport wedding photographers
+- Newport wedding planners
+- Newport wedding florists
+- Newport wedding caterers
+
+### First 10 SEO/Content Pages
+
+These are the first pages to build intentionally.
+
+1. `Newport Wedding Venues`
+   - page type: hybrid landing page
+   - goal: capture top venue intent and route traffic into venue category pages and listings
+
+2. `Small Wedding Venues in Newport`
+   - page type: editorial + hybrid landing page
+   - goal: rank for intimate/small venue intent and connect into venue browsing
+
+3. `Luxury Newport Wedding Venues`
+   - page type: hybrid landing page
+   - goal: align with high-end Newport positioning and commercial venue demand
+
+4. `Waterfront Wedding Venues in Newport`
+   - page type: hybrid landing page
+   - goal: capture one of the strongest destination-specific venue angles
+
+5. `Newport Wedding Budget Guide`
+   - page type: guide page
+   - goal: attract planning traffic and qualify users before vendor exploration
+
+6. `Newport Wedding Timeline`
+   - page type: guide page
+   - goal: planning authority and internal links into venue/planner/vendor pages
+
+7. `How to Choose a Newport Wedding Venue`
+   - page type: guide page
+   - goal: bridge early planning intent into venue and directory pages
+
+8. `Best Time of Year for a Newport Wedding`
+   - page type: local guide page
+   - goal: seasonal/local search intent and authority
+
+9. `Newport Wedding Weekend Itinerary`
+   - page type: local guide page
+   - goal: destination-weekend positioning and high local specificity
+
+10. `Newport Rehearsal Dinner Ideas`
+   - page type: local guide page
+   - goal: expand wedding-weekend cluster and support surrounding pages
+
+### Page Type Rules
+
+Use these definitions when deciding what to build:
+
+#### Guide page
+
+- best for planning and authority
+- should answer one core question well
+- should link to categories and adjacent guides
+
+#### Hybrid landing page
+
+- best for high-intent SEO plus directory discovery
+- should combine useful editorial framing with directory/category routing
+- should not feel like a thin list page
+
+#### Local guide page
+
+- best for Newport-specific destination intent
+- should feel locally informed, not generic wedding content with Newport pasted in
+
+#### Category page
+
+- best for direct commercial directory browsing
+- should be strengthened by linking in from related guides and hybrid pages
+
+### Internal Linking Plan
+
+Each of the first 10 pages should create deliberate links.
+
+#### `Newport Wedding Venues`
+
+- link to:
+  - `/planning/venues`
+  - `/wedding/venues`
+  - small/luxury/waterfront venue pages
+
+#### `Small Wedding Venues in Newport`
+
+- link to:
+  - `/wedding/venues`
+  - `How to Choose a Newport Wedding Venue`
+  - `Newport Wedding Budget Guide`
+
+#### `Luxury Newport Wedding Venues`
+
+- link to:
+  - `/wedding/venues`
+  - `Best Time of Year for a Newport Wedding`
+  - planners and photographers categories later
+
+#### `Waterfront Wedding Venues in Newport`
+
+- link to:
+  - `/wedding/venues`
+  - `Newport Wedding Weekend Itinerary`
+  - `Best Time of Year for a Newport Wedding`
+
+#### `Newport Wedding Budget Guide`
+
+- link to:
+  - `/planning/venues`
+  - `/wedding/venues`
+  - `/wedding/planners`
+
+#### `Newport Wedding Timeline`
+
+- link to:
+  - `/wedding/planners`
+  - `/wedding/photographers`
+  - `How to Choose a Newport Wedding Venue`
+
+#### `How to Choose a Newport Wedding Venue`
+
+- link to:
+  - `/wedding/venues`
+  - `Newport Wedding Budget Guide`
+  - `Newport Wedding Venues`
+
+#### `Best Time of Year for a Newport Wedding`
+
+- link to:
+  - `Newport Wedding Venues`
+  - `Waterfront Wedding Venues in Newport`
+  - `Newport Wedding Weekend Itinerary`
+
+#### `Newport Wedding Weekend Itinerary`
+
+- link to:
+  - `Newport Rehearsal Dinner Ideas`
+  - `Best Time of Year for a Newport Wedding`
+  - `/newport-guide`
+
+#### `Newport Rehearsal Dinner Ideas`
+
+- link to:
+  - `Newport Wedding Weekend Itinerary`
+  - `/newport-guide`
+  - venue or planning pages where relevant
+
+### Publish Order
+
+Build in this order:
+
+1. `Newport Wedding Venues`
+2. `How to Choose a Newport Wedding Venue`
+3. `Newport Wedding Budget Guide`
+4. `Best Time of Year for a Newport Wedding`
+5. `Newport Wedding Weekend Itinerary`
+6. `Small Wedding Venues in Newport`
+7. `Waterfront Wedding Venues in Newport`
+8. `Luxury Newport Wedding Venues`
+9. `Newport Wedding Timeline`
+10. `Newport Rehearsal Dinner Ideas`
+
+### Content Brief Standard
+
+Before writing each page, define:
+
+- primary query
+- page type
+- user stage
+- conversion goal
+- 3 to 5 key internal links
+- what makes this page distinct from similar pages
+
 ## Phase 5: Admin and Internal Workflow
 
 Goal: stop relying on direct database edits for normal content work.

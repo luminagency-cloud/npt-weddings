@@ -6,21 +6,26 @@ export const metadata: Metadata = {
     "Local Newport wedding guidance on timing, guest experience, and how to shape a strong weekend in one of the country’s top wedding destinations.",
 }
 
+import Link from "next/link"
+
 const guideTopics = [
   {
     title: "Best time of year",
     description:
       "Season changes everything here: pricing, crowding, weather exposure, and what type of wedding feels natural.",
+    href: "/newport-guide/best-time-of-year",
   },
   {
     title: "Guest experience",
     description:
       "Newport works best when the wedding feels like a coherent weekend rather than a set of disconnected reservations.",
+    href: "/newport-guide/weekend-itinerary",
   },
   {
-    title: "Weekend flow",
+    title: "Rehearsal dinner ideas",
     description:
-      "Think through arrival, dinner, ceremony, reception, morning-after plans, and travel pressure as one story.",
+      "Use the first event of the weekend to set tone without creating more friction.",
+    href: "/newport-guide/rehearsal-dinner-ideas",
   },
 ]
 
@@ -42,15 +47,16 @@ export default function NewportGuidePage() {
       </div>
       <div className="mt-12 grid gap-4 md:grid-cols-3">
         {guideTopics.map((topic) => (
-          <article
+          <Link
             key={topic.title}
+            href={topic.href}
             className="rounded-[1.75rem] border border-[var(--color-line)] bg-white p-6"
           >
             <h2 className="text-xl font-semibold">{topic.title}</h2>
             <p className="mt-3 text-sm leading-6 text-[var(--color-muted)]">
               {topic.description}
             </p>
-          </article>
+          </Link>
         ))}
       </div>
     </div>

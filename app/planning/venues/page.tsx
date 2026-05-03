@@ -8,9 +8,18 @@ export const metadata: Metadata = {
 }
 
 const venueAngles = [
-  "Waterfront venues with strong guest experience",
-  "Estate-style weddings with a more private feel",
-  "Smaller celebrations that still feel distinctly Newport",
+  {
+    title: "Waterfront Venues",
+    href: "/planning/venues/waterfront",
+  },
+  {
+    title: "Luxury Venues",
+    href: "/planning/venues/luxury",
+  },
+  {
+    title: "Small Wedding Venues",
+    href: "/planning/venues/small-weddings",
+  },
 ]
 
 export default function VenuePlanningPage() {
@@ -45,12 +54,16 @@ export default function VenuePlanningPage() {
 
       <section className="mt-14 grid gap-4 md:grid-cols-3">
         {venueAngles.map((angle) => (
-          <div
-            key={angle}
+          <Link
+            key={angle.title}
+            href={angle.href}
             className="rounded-[1.75rem] border border-[var(--color-line)] bg-[var(--color-cream-strong)] p-6"
           >
-            <h2 className="text-xl font-semibold">{angle}</h2>
-          </div>
+            <h2 className="text-xl font-semibold">{angle.title}</h2>
+            <p className="mt-3 text-sm leading-6 text-[var(--color-muted)]">
+              Explore this Newport venue angle in more detail.
+            </p>
+          </Link>
         ))}
       </section>
 

@@ -20,7 +20,7 @@ export const metadata: Metadata = {
   metadataBase: new URL(siteConfig.siteUrl),
   title: {
     default: siteConfig.name,
-    template: `%s | ${siteConfig.seoName}`,
+    template: `%s | Newport, RI | ${siteConfig.name}`,
   },
   description: siteConfig.description,
   alternates: {
@@ -30,11 +30,13 @@ export const metadata: Metadata = {
     type: "website",
     url: siteConfig.siteUrl,
     siteName: siteConfig.name,
+    locale: "en_US",
     title: siteConfig.name,
     description: siteConfig.description,
   },
   twitter: {
     card: "summary_large_image",
+    site: "@marriedinnewport",
     title: siteConfig.name,
     description: siteConfig.description,
   },
@@ -71,6 +73,11 @@ export default function RootLayout({
     name: siteConfig.name,
     url: siteConfig.siteUrl,
     description: siteConfig.description,
+    potentialAction: {
+      "@type": "SearchAction",
+      target: `${siteConfig.siteUrl}/wedding?q={search_term_string}`,
+      "query-input": "required name=search_term_string",
+    },
   }
 
   return (

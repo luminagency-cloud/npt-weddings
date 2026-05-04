@@ -12,8 +12,9 @@ import {
 export const revalidate = 3600
 
 export const metadata: Metadata = {
-  title: "Wedding Directory | Newport, Rhode Island",
-  description: "Browse wedding vendors by category for Newport, Rhode Island.",
+  title: "Newport Wedding Vendor Directory",
+  description: "Browse wedding vendors by category for Newport, Rhode Island — venues, photographers, planners, florists, and more.",
+  alternates: { canonical: "/wedding" },
 }
 
 const CATEGORY_ICONS: Record<string, string> = {

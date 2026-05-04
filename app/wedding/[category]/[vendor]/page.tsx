@@ -25,13 +25,20 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { category, vendor: vendorSlug } = await params
   const vendor = await getVendorByCategoryAndSlug(category, vendorSlug)
   if (!vendor) return {}
-  const title = vendor.meta_title ?? `${vendor.name} | Newport, RI`
+  const title = vendor.meta_title ?? vendor.name
+  const rawDesc = vendor.description_override ?? vendor.description ?? null
+  const firstSentence = rawDesc ? rawDesc.split(/[.!?]/)[0].trim() : null
+  const categoryLabel = (vendor.category_label ?? "wedding vendor").toLowerCase()
   const description =
     vendor.meta_description ??
-    vendor.description_override ??
-    vendor.description ??
-    `${vendor.name} is a wedding vendor in Newport, Rhode Island.`
-  return { title, description }
+    (firstSentence
+      ? `${vendor.name} — ${categoryLabel} serving Newport, Rhode Island. ${firstSentence}.`
+      : `${vendor.name} is a ${categoryLabel} serving Newport, Rhode Island.`)
+  return {
+    title,
+    description,
+    alternates: { canonical: `/wedding/${category}/${vendorSlug}` },
+  }
 }
 
 export default async function VendorDetailPage({ params }: Props) {

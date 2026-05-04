@@ -37,6 +37,8 @@ export interface Vendor {
   promo_expires_at: string | null
   meta_title: string | null
   meta_description: string | null
+  lat: number | null
+  lng: number | null
   active: boolean
   created_at: string
   updated_at: string

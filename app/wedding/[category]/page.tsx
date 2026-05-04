@@ -22,10 +22,11 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const category = await getCategoryBySlug(slug)
   if (!category) return {}
   return {
-    title: `${category.label} in Newport, RI`,
+    title: category.label,
     description:
       category.description ??
       `Find ${category.label.toLowerCase()} for your Newport, Rhode Island wedding.`,
+    alternates: { canonical: `/wedding/${slug}` },
   }
 }
 

@@ -32,7 +32,7 @@ type GuidePageContent = {
 
 export const guidePages = {
   budgetGuide: {
-    metadataTitle: "Newport Wedding Budget Guide",
+    metadataTitle: "Newport Wedding Cost Guide",
     description:
       "A practical Newport wedding budget guide covering venue format, staffing pressure, rentals, and guest-flow costs.",
     breadcrumbs: [
@@ -85,7 +85,7 @@ export const guidePages = {
     ],
   },
   timeline: {
-    metadataTitle: "Newport Wedding Timeline",
+    metadataTitle: "Newport Wedding Planning Timeline",
     description:
       "A Newport wedding timeline guide for sequencing venue, planning, photography, food, and guest-experience decisions.",
     breadcrumbs: [
@@ -350,7 +350,7 @@ export const guidePages = {
     ],
   },
   luxuryVenues: {
-    metadataTitle: "Luxury Newport Wedding Venues",
+    metadataTitle: "Luxury Wedding Venues Newport RI",
     description:
       "A guide to luxury Newport wedding venues for couples looking for prestige, service, and a highly polished guest experience.",
     breadcrumbs: [
@@ -432,7 +432,7 @@ export const guidePages = {
     ],
   },
   waterfrontVenues: {
-    metadataTitle: "Waterfront Wedding Venues in Newport",
+    metadataTitle: "Waterfront Wedding Venues Newport RI",
     description:
       "A guide to waterfront wedding venues in Newport for couples balancing scenery, weather exposure, and guest experience.",
     breadcrumbs: [
@@ -514,7 +514,7 @@ export const guidePages = {
     ],
   },
   smallWeddingVenues: {
-    metadataTitle: "Small Wedding Venues in Newport",
+    metadataTitle: "Small Wedding Venues Newport RI",
     description:
       "A guide to small wedding venues in Newport for couples prioritizing intimacy, guest experience, and a cleaner weekend format.",
     breadcrumbs: [

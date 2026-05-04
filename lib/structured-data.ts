@@ -82,10 +82,28 @@ export function buildCollectionPageJsonLd({
   }
 }
 
+const VENDOR_SCHEMA_TYPES: Record<string, string> = {
+  venues: "EventVenue",
+  photographers: "ProfessionalService",
+  planners: "ProfessionalService",
+}
+
+const AREA_SERVED = {
+  "@type": "City",
+  name: "Newport",
+  sameAs: "https://en.wikipedia.org/wiki/Newport,_Rhode_Island",
+}
+
 export function buildLocalBusinessJsonLd(vendor: Vendor) {
+  const schemaType = VENDOR_SCHEMA_TYPES[vendor.category_slug ?? ""] ?? "LocalBusiness"
+  const geo =
+    vendor.lat != null && vendor.lng != null
+      ? { "@type": "GeoCoordinates", latitude: vendor.lat, longitude: vendor.lng }
+      : undefined
+
   return {
     "@context": "https://schema.org",
-    "@type": "LocalBusiness",
+    "@type": schemaType,
     name: vendor.name,
     description:
       vendor.description_override ??
@@ -102,7 +120,8 @@ export function buildLocalBusinessJsonLd(vendor: Vendor) {
       postalCode: vendor.zip ?? undefined,
       addressCountry: "US",
     },
-    areaServed: "Newport County, Rhode Island",
+    ...(geo ? { geo } : {}),
+    areaServed: AREA_SERVED,
     sameAs: vendor.website ? [vendor.website] : undefined,
   }
 }

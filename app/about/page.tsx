@@ -2,9 +2,10 @@ import type { Metadata } from "next"
 import Link from "next/link"
 
 export const metadata: Metadata = {
-  title: "About",
+  title: "About Married in Newport",
   description:
-    "About Married in Newport and the couple-first point of view behind the site.",
+    "About Married in Newport — the couple-first planning guide built around real Newport wedding search intent, local perspective, and venue-first guidance.",
+  alternates: { canonical: "/about" },
 }
 
 export default function AboutPage() {

@@ -44,6 +44,8 @@ CREATE TABLE vendors (
   promo_expires_at TIMESTAMPTZ,
   meta_title TEXT,
   meta_description TEXT,
+  lat NUMERIC(10,7),
+  lng NUMERIC(10,7),
   active BOOLEAN DEFAULT true,
   created_at TIMESTAMPTZ DEFAULT NOW(),
   updated_at TIMESTAMPTZ DEFAULT NOW()

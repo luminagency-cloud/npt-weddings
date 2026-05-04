@@ -22,8 +22,8 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const vendorUrls: MetadataRoute.Sitemap = vendors.map((v) => ({
     url: `${siteConfig.siteUrl}/wedding/${v.cat_slug}/${v.slug}`,
     lastModified: new Date(v.updated_at),
-    changeFrequency: "weekly",
-    priority: 0.7,
+    changeFrequency: "monthly",
+    priority: 0.6,
   }))
 
   const categoryUrls: MetadataRoute.Sitemap = categories
@@ -31,8 +31,8 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     .map((c) => ({
     url: `${siteConfig.siteUrl}/wedding/${c.slug}`,
     lastModified: new Date(),
-    changeFrequency: "daily",
-    priority: 0.9,
+    changeFrequency: "monthly",
+    priority: 0.8,
   }))
 
   return [

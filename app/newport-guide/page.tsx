@@ -1,9 +1,12 @@
 import type { Metadata } from "next"
+import { buildArticleJsonLd, serializeJsonLd } from "@/lib/structured-data"
 
 export const metadata: Metadata = {
   title: "Newport Wedding Guide",
   description:
     "Local Newport wedding guidance on timing, guest experience, and how to shape a strong weekend in one of the country’s top wedding destinations.",
+  alternates: { canonical: "/newport-guide" },
+  openGraph: { type: "article" },
 }
 
 import Link from "next/link"
@@ -67,8 +70,14 @@ const nextSteps = [
 ]
 
 export default function NewportGuidePage() {
+  const articleJsonLd = buildArticleJsonLd({
+    title: "Newport Wedding Guide",
+    description: "Local Newport wedding guidance on timing, guest experience, and how to shape a strong weekend in one of the country's top wedding destinations.",
+    path: "/newport-guide",
+  })
   return (
     <div className="mx-auto max-w-6xl px-4 py-16 sm:px-6">
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: serializeJsonLd(articleJsonLd) }} />
       <div className="max-w-3xl">
         <p className="font-sans text-[0.72rem] font-semibold uppercase tracking-[0.24em] text-[var(--color-gold-deep)]">
           Newport Guide

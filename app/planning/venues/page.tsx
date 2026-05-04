@@ -11,6 +11,8 @@ export const metadata: Metadata = {
   title: "Newport Wedding Venues",
   description:
     "A practical guide to Newport wedding venues, venue styles, and how to narrow the right fit in one of America’s premier wedding destinations.",
+  alternates: { canonical: "/planning/venues" },
+  openGraph: { type: "article" },
 }
 
 const venueAngles = [

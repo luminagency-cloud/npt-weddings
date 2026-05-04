@@ -5,6 +5,8 @@ export const metadata: Metadata = {
   title: "Newport Wedding Planning",
   description:
     "Find the right Newport wedding venue, shape the weekend around it, and plan a celebration that feels unmistakably coastal, polished, and personal.",
+  alternates: { canonical: "/" },
+  openGraph: { type: "website" },
 }
 
 const venueStarts = [

@@ -30,6 +30,12 @@ const guideTopics = [
       "Use the first event of the weekend to set tone without creating more friction.",
     href: "/newport-guide/rehearsal-dinner-ideas",
   },
+  {
+    title: "Rhode Island marriage license",
+    description:
+      "Where to apply, the 3-day waiting period, what to bring, and what out-of-state couples need to know.",
+    href: "/newport-guide/marriage-license-ri",
+  },
 ]
 
 const planningRealities = [
@@ -91,7 +97,7 @@ export default function NewportGuidePage() {
           town changes the cost and pace of the weekend.
         </p>
       </div>
-      <div className="mt-12 grid gap-4 md:grid-cols-3">
+      <div className="mt-12 grid gap-4 sm:grid-cols-2 md:grid-cols-4">
         {guideTopics.map((topic) => (
           <Link
             key={topic.title}

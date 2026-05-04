@@ -33,7 +33,7 @@ import {
 async function run() {
   assert.equal(
     absoluteUrl("/planning/venues"),
-    "https://npt-weddings.vercel.app/planning/venues"
+    "https://weddingsinnewport.com/planning/venues"
   )
   assert.match(serializeJsonLd({ note: "<script>" }), /\\u003cscript>/)
 
@@ -47,7 +47,7 @@ async function run() {
     "@type": "ListItem",
     position: 2,
     name: "Planning",
-    item: "https://npt-weddings.vercel.app/planning",
+    item: "https://weddingsinnewport.com/planning",
   })
 
   const collection = buildCollectionPageJsonLd({
@@ -61,7 +61,7 @@ async function run() {
   assert.deepEqual(collection.mainEntity.itemListElement[0], {
     "@type": "ListItem",
     position: 1,
-    url: "https://npt-weddings.vercel.app/wedding/venues/ocean-house",
+    url: "https://weddingsinnewport.com/wedding/venues/ocean-house",
   })
 
   const guidePaths = Object.values(guidePages).map((guide) => guide.path)

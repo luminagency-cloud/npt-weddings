@@ -1,89 +1,74 @@
 # Married in Newport
 
-Married in Newport is a Newport-area wedding planning site with a curated vendor directory inside it.
+Married in Newport is a couple-first Newport wedding planning site with a curated local directory inside it.
 
-The brand is `Married in Newport`. The search-facing language stays anchored in `Newport weddings`, `weddings in Newport`, and related venue and planning terms.
-
-The MVP is not a vendor platform. The MVP is a polished, useful site for couples:
-
-- strong homepage
-- useful planning pages
-- curated local directory
-- clean design
-- mobile-friendly experience
-
-Monetization, vendor claims, and paid listing flows come later.
-
-## Current Direction
-
-The launch goal is simple:
-
-- get a credible site live quickly
-- make it visually strong enough to show people
-- keep scope tight
-- avoid fluff, placeholders, and half-built business features
-
-Primary audience:
-
-- couples planning Newport-area weddings
-- families and wedding parties researching options
-
-Not the priority yet:
-
-- vendor dashboards
-- paid placements
-- subscription billing
-
-## MVP Scope
-
-The MVP should include:
+The current product is already beyond a bare directory. The public site includes:
 
 - a polished homepage
-- a wedding directory landing page
-- a tight set of real launch categories
-- at least 45 real businesses live, with 65 to 95 preferred
-- at least 5 strong editorial/planning pages
-- solid mobile layout
-- SEO basics in place
+- planning guides
+- Newport-specific editorial pages
+- category and vendor detail routes
+- a lean internal admin for categories and vendors
 
-The MVP should not include:
+The MVP is still content- and inventory-constrained, not architecture-constrained.
 
-- empty categories
-- filler copy
-- fake content depth
-- half-built payment flows
-- public nav items with weak or missing destinations
+## MVP Reality
 
-## Recommended Launch Categories
+What is already in place:
 
-- venues
-- photographers
-- planners
-- florists
-- caterers
-- hair and makeup
-- bands and DJs
-- rentals
+- public site shell and design system
+- homepage, planning, and Newport guide sections
+- category pages and vendor detail pages
+- metadata, sitemap, robots, and JSON-LD
+- admin login, category editing, vendor editing, and import-prep guidance
+- production build and current test pass
 
-If inventory is short, narrow the public scope rather than exposing thin categories.
+What still matters most before launch:
+
+- enough real listings in launch categories
+- one usable image per venue listing
+- tighter verification of public copy and category depth
+- final launch QA on mobile and live data
+
+## Launch Scope
+
+Keep launch narrow and honest.
+
+Recommended public focus:
+
+- `venues`
+- `photographers`
+- `planners`
+- `florists`
+- `caterers`
+- `hair-makeup`
+- `music`
+- `rentals`
+
+If any category is thin, hide it from the launch experience rather than stretching it with weak listings.
 
 ## Project Structure
 
 ```text
 app/
-  admin/                   admin routes
+  admin/                   internal category/vendor management
   api/auth/                auth route handlers
-  claim/                   future vendor-claim flow
-  wedding/                 public directory routes
+  claim/                   manual claim-request page
+  newport-guide/           Newport-local editorial pages
+  planning/                planning and venue-guidance pages
+  wedding/                 directory routes
 components/                reusable UI
 lib/
   db.ts                    database connection
   queries.ts               data access
-  schema.sql               current database schema
-  seed.sql                 local seed data
-auth.ts                    auth configuration
-middleware.ts              admin route protection
-TODO.md                    roadmap and execution plan
+  schema.sql               current schema
+  structured-data.ts       JSON-LD helpers
+  site.ts                  site config and static route list
+scripts/
+  import-vendors.ts        CSV import helper
+  geocode-venues.ts        venue geocoding helper
+TODO.md                    current MVP launch punch list
+DEPLOY.md                  lean deploy and launch checklist
 ```
 
 ## Tech Stack
@@ -97,19 +82,9 @@ TODO.md                    roadmap and execution plan
 
 ## Local Setup
 
-1. Install dependencies:
-
-```bash
-npm install
-```
-
-2. Create local environment config:
-
-```bash
-copy .env.example .env.local
-```
-
-3. Fill in the required variables in `.env.local`:
+1. Install dependencies.
+2. Copy `.env.example` to `.env.local`.
+3. Fill in the required variables:
 
 - `DATABASE_URL`
 - `AUTH_SECRET`
@@ -118,10 +93,13 @@ copy .env.example .env.local
 - `ADMIN_PASSWORD`
 - `NEXT_PUBLIC_SITE_URL`
 
-Optional for later phases:
+Optional but currently referenced:
 
 - `NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION`
 - `NEXT_PUBLIC_GA_MEASUREMENT_ID`
+
+Reserved for later or manual asset work:
+
 - `STRIPE_SECRET_KEY`
 - `STRIPE_WEBHOOK_SECRET`
 - `CLOUDFLARE_R2_ACCOUNT_ID`
@@ -129,90 +107,45 @@ Optional for later phases:
 - `CLOUDFLARE_R2_SECRET_ACCESS_KEY`
 - `CLOUDFLARE_R2_BUCKET_NAME`
 
-4. Start the app:
+4. Start the app with `npm run dev`.
 
-```bash
-npm run dev
-```
+## Current Routes
 
-5. Open:
-
-- `http://localhost:3000`
-
-## Database Notes
-
-The schema lives in [lib/schema.sql](/D:/_work/npt-weddings/lib/schema.sql).
-
-Current schema support exists for:
-
-- categories
-- vendors
-- vendor photos
-- tags
-- vendor hours
-- future claim/payment-related fields
-
-For now, the admin UI is minimal and some content/data management is still expected to happen directly in the database.
-
-## Routes
-
-Current public routes:
+Public:
 
 - `/`
+- `/planning`
+- `/planning/venues`
+- `/planning/venues/luxury`
+- `/planning/venues/small-weddings`
+- `/planning/venues/waterfront`
+- `/planning/choose-a-venue`
+- `/planning/budget-guide`
+- `/planning/newport-wedding-cost`
+- `/planning/timeline`
+- `/newport-guide`
+- `/newport-guide/best-time-of-year`
+- `/newport-guide/weekend-itinerary`
+- `/newport-guide/rehearsal-dinner-ideas`
+- `/newport-guide/marriage-license-ri`
 - `/wedding`
 - `/wedding/[category]`
 - `/wedding/[category]/[vendor]`
 - `/claim/[vendor]`
 
-Current admin routes:
+Admin:
 
-- `/admin/login`
 - `/admin`
+- `/admin/login`
+- `/admin/categories`
+- `/admin/vendors`
+- `/admin/import`
 
-## Working Priorities
+## Working Standard
 
-The current order of work is:
+- Keep the public experience couple-first.
+- Keep launch navigation tight.
+- Hide weak categories instead of padding them.
+- Treat claims, billing, and vendor self-service as post-MVP unless a minimal manual flow is enough.
 
-1. tighten product framing and MVP scope
-2. deepen the first wave of planning and venue SEO pages
-3. improve the directory landing page and category templates
-4. add broader smoke coverage for key routes and helpers
-5. verify analytics/search-console setup once traffic starts coming in
-6. prepare for deployment
-
-Full details live in [TODO.md](/D:/_work/npt-weddings/TODO.md).
-
-## Design Standard
-
-The public site should feel:
-
-- editorial, not template-like
-- local and specific, not generic
-- clean and premium, not busy
-- concise and confident, not padded
-
-If a page is weak, cut it from launch scope instead of filling it with fluff.
-
-## Deployment Plan
-
-The app is currently local-only.
-
-Deployment target when ready:
-
-- Vercel
-
-Before deployment:
-
-- remove obvious placeholder states
-- confirm environment variables
-- verify mobile layout
-- check metadata and sitemap behavior
-- make sure launch nav only includes real pages
-- verify GA4 traffic after a few days of live visits
-- connect Search Console and submit the sitemap
-
-## Notes
-
-- This repo includes a `TODO.md` planning document that acts as the working roadmap.
-- Vendor claims are intentionally deferred until after the public MVP is strong.
-- Monetization is not the launch priority.
+The active launch checklist lives in [TODO.md](/D:/_work/npt-weddings/TODO.md).

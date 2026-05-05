@@ -2,93 +2,79 @@
 
 ## Product Shape
 
-`npt-weddings` is a couple-first wedding planning site with a curated local vendor directory inside it.
+`npt-weddings` is a couple-first Newport wedding planning site with a curated directory inside it.
 
-For MVP:
+The current app shape is:
 
-- planning and editorial usefulness come first
-- vendor monetization comes later
-- public polish matters more than feature breadth
+- editorial/planning pages that help couples make early decisions
+- a directory that supports venue and vendor discovery
+- a lean internal admin for maintaining categories and listings
 
-## App Structure
+## Public Surface
 
-### Public routes
+Main route groups:
 
 - `/`
-  - currently redirects to `/wedding`
+- `/planning/*`
+- `/newport-guide/*`
 - `/wedding`
-  - directory landing page
 - `/wedding/[category]`
-  - category listing page
 - `/wedding/[category]/[vendor]`
-  - vendor detail page
 - `/claim/[vendor]`
-  - placeholder claim route for a later phase
 
-### Admin routes
+The claim route is a manual-review flow, not a full product workflow.
 
-- `/admin/login`
+## Internal Surface
+
+Admin routes:
+
 - `/admin`
+- `/admin/login`
+- `/admin/categories`
+- `/admin/vendors`
+- `/admin/import`
 
-### API routes
-
-- `/api/auth/[...nextauth]`
+Auth is configured in [auth.ts](/D:/_work/npt-weddings/auth.ts). There is no separate `middleware.ts` file in the current repo.
 
 ## Code Layout
 
 ### `app/`
 
-Holds route segments and page-level UI.
+App Router routes and page-level UI.
 
 ### `components/`
 
-Reusable UI components.
-
-Current notable component:
-
-- `vendor-card.tsx`
+Reusable presentation pieces for directory, layout, and editorial pages.
 
 ### `lib/`
 
-Shared server-side logic and data access.
+Shared application logic:
 
-- `db.ts`
-  - database connection setup
-- `queries.ts`
-  - read queries used by routes
-- `types.ts`
-  - shared TypeScript models
-- `schema.sql`
-  - current database schema
-- `seed.sql`
-  - local seed data
+- [db.ts](/D:/_work/npt-weddings/lib/db.ts): Neon connection
+- [queries.ts](/D:/_work/npt-weddings/lib/queries.ts): data access layer
+- [site.ts](/D:/_work/npt-weddings/lib/site.ts): site config and route inventory
+- [structured-data.ts](/D:/_work/npt-weddings/lib/structured-data.ts): JSON-LD helpers
+- [guide-content.ts](/D:/_work/npt-weddings/lib/guide-content.ts): structured page content
+- [schema.sql](/D:/_work/npt-weddings/lib/schema.sql): database schema
 
-### Root files
+### `scripts/`
 
-- `auth.ts`
-  - auth configuration
-- `middleware.ts`
-  - admin route protection
-- `README.md`
-  - project overview and setup
-- `TODO.md`
-  - roadmap and execution plan
+Operational helpers for vendor import and venue geocoding.
 
 ## Rendering Model
 
-The app currently uses App Router pages with server-side data fetching from the database layer in `lib/queries.ts`.
+The public site is App Router-based and fetches data server-side through `lib/queries.ts`.
 
-Current pattern:
+Current behavior:
 
-- routes fetch server-side data directly
-- pages render simple presentational markup
-- auth is handled at the route level for admin pages
+- editorial pages are static
+- directory landing page revalidates
+- category and vendor pages are rendered from database-backed queries
+- metadata is generated per route where needed
 
 ## Data Model
 
-Current schema is centered on the vendor directory.
-
-Main tables:
+Core tables:
 
 - `categories`
 - `subcategories`
@@ -98,34 +84,20 @@ Main tables:
 - `vendor_tags`
 - `vendor_hours`
 
-There are also fields already present for later business workflows:
+The schema already supports more than the current product surface. In practice, the live MVP still depends mostly on:
 
-- claim status
-- verification status
-- Stripe customer/subscription references
-- promo fields
+- categories
+- vendors
+- vendor photos
+- tags
 
-## Current Architectural Constraints
+## Current Constraint
 
-- The schema is stronger than the current product surface.
-- Editorial/planning content does not yet have its own model.
-- Admin tooling is minimal.
-- Claim and payment routes are not real product flows yet.
+The repo is not blocked on architecture.
 
-## Near-Term Direction
+The main launch constraints are:
 
-The next architectural layer should support the MVP, not future monetization.
-
-That means:
-
-- improve public page structure first
-- add reusable layout and section patterns
-- introduce planning/editorial page support
-- keep vendor claims and billing isolated until Phase 2+
-
-## Working Rules
-
-- Keep data access centralized in `lib/queries.ts` unless there is a strong reason to split it.
-- Avoid leaking unfinished monetization concerns into MVP browsing flows.
-- Add public nav only for pages that are actually ready.
-- Prefer reusable sections and templates over one-off page builds.
+- listing depth
+- image coverage
+- copy quality
+- final live QA

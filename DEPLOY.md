@@ -1,45 +1,34 @@
 # Deploy
 
-## Goal
+This is the lean deploy and launch checklist for the current MVP.
 
-Deploy a credible MVP to Vercel as soon as the public-facing site is strong enough to show.
+## Before Deploy
 
-This is a launch checklist, not a long-term ops manual.
+Product:
 
-## Target
+- homepage feels finished on desktop and mobile
+- launch nav only includes real pages
+- launch categories have enough depth to be useful
+- venue pages have at least one usable image
+- obvious weak listings or weak categories have been removed
 
-- Vercel
+Technical:
 
-## Pre-Deploy Checklist
-
-### Product
-
-- Homepage looks polished on desktop and mobile
-- Launch nav contains only real pages
-- No obvious placeholder copy on public pages
-- No empty categories in public navigation
-- At least the MVP minimum number of real businesses is live
-- At least 5 strong editorial/planning pages are published
-
-### Technical
-
-- `npm install` completes cleanly
+- `npm test` passes
 - `npm run build` passes
-- environment variables are defined
-- public metadata is in place
-- sitemap works correctly
-- obvious route/data bugs are fixed
+- production environment variables are set
+- production domain is correct in metadata and sitemap output
+- a few real vendor and category pages have been checked with live data
 
-### Content
+Content:
 
-- category intros are unique
-- page titles and descriptions are not generic
-- AI-assisted content has been reviewed and tightened by hand
-- weak pages are removed from nav instead of padded
+- category intros read as intentional, not placeholder copy
+- AI-assisted descriptions have been tightened where they feel generic
+- featured listings look meaningfully different from basic listings
 
 ## Environment Variables
 
-Required for deployment:
+Required:
 
 - `DATABASE_URL`
 - `AUTH_SECRET`
@@ -48,7 +37,12 @@ Required for deployment:
 - `ADMIN_PASSWORD`
 - `NEXT_PUBLIC_SITE_URL`
 
-Optional for later phases:
+Optional but currently used when available:
+
+- `NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION`
+- `NEXT_PUBLIC_GA_MEASUREMENT_ID`
+
+Not required for MVP launch unless you are actively using them:
 
 - `STRIPE_SECRET_KEY`
 - `STRIPE_WEBHOOK_SECRET`
@@ -57,32 +51,22 @@ Optional for later phases:
 - `CLOUDFLARE_R2_SECRET_ACCESS_KEY`
 - `CLOUDFLARE_R2_BUCKET_NAME`
 
-## Vercel Notes
+## After Deploy
 
-When the app is ready:
-
-1. Create the Vercel project.
-2. Connect the Git repo or deploy the current codebase directly.
-3. Add the required environment variables.
-4. Set `NEXT_PUBLIC_SITE_URL` to the real production domain.
-5. Run the first production deploy.
-6. Verify public routes, admin login, and metadata output.
-
-## Post-Deploy Checks
-
-- Open the homepage
-- Open the directory landing page
-- Open at least two category pages
-- Open at least one vendor detail page
-- Check mobile layout
-- Check sitemap output
-- Confirm the production domain is used in metadata and sitemap URLs
+- open the homepage
+- open the planning hub
+- open the Newport guide hub
+- open at least two category pages
+- open at least three vendor pages, including one with images
+- inspect `sitemap.xml`
+- confirm canonical and OG URLs use the real domain
+- confirm GA4 is receiving traffic
+- watch Search Console for indexing issues
 
 ## Do Not Block Launch On
 
-- vendor claim flow
-- Stripe integration
-- vendor self-service tooling
-- full admin CMS
-
-If the public-facing site is strong, launch first and expand from there.
+- Stripe
+- paid upgrades
+- vendor self-service
+- a full image management UI
+- a full CMS

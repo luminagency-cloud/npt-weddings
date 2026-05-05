@@ -33,12 +33,21 @@ export const metadata: Metadata = {
     locale: "en_US",
     title: siteConfig.name,
     description: siteConfig.description,
+    images: [
+      {
+        url: "/og-default.svg",
+        width: 1200,
+        height: 630,
+        alt: "Married in Newport — Newport, RI Wedding Planning",
+      },
+    ],
   },
   twitter: {
     card: "summary_large_image",
     site: "@marriedinnewport",
     title: siteConfig.name,
     description: siteConfig.description,
+    images: ["/og-default.svg"],
   },
   verification: siteConfig.googleVerification
     ? { google: siteConfig.googleVerification }

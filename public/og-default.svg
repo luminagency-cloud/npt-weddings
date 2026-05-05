@@ -1,0 +1,66 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%"  stop-color="#1e3347"/>
+      <stop offset="100%" stop-color="#162840"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Background -->
+  <rect width="1200" height="630" fill="url(#bg)"/>
+
+  <!-- Subtle corner accent: thin gold lines framing the text block -->
+  <rect x="80" y="80" width="60" height="2" fill="#c9a96e" opacity="0.7"/>
+  <rect x="80" y="80" width="2" height="60" fill="#c9a96e" opacity="0.7"/>
+  <rect x="1060" y="80" width="60" height="2" fill="#c9a96e" opacity="0.7"/>
+  <rect x="1118" y="80" width="2" height="60" fill="#c9a96e" opacity="0.7"/>
+  <rect x="80" y="548" width="60" height="2" fill="#c9a96e" opacity="0.7"/>
+  <rect x="80" y="490" width="2" height="60" fill="#c9a96e" opacity="0.7"/>
+  <rect x="1060" y="548" width="60" height="2" fill="#c9a96e" opacity="0.7"/>
+  <rect x="1118" y="490" width="2" height="60" fill="#c9a96e" opacity="0.7"/>
+
+  <!-- Gold rule above wordmark -->
+  <rect x="480" y="256" width="240" height="1" fill="#c9a96e" opacity="0.6"/>
+
+  <!-- Eyebrow label -->
+  <text
+    x="600"
+    y="297"
+    font-family="Georgia, 'Times New Roman', serif"
+    font-size="13"
+    font-weight="400"
+    letter-spacing="5"
+    fill="#c9a96e"
+    text-anchor="middle"
+    dominant-baseline="middle"
+    opacity="0.85"
+  >NEWPORT, RHODE ISLAND</text>
+
+  <!-- Main wordmark: Married in Newport -->
+  <text
+    x="600"
+    y="358"
+    font-family="Georgia, 'Times New Roman', serif"
+    font-size="72"
+    font-weight="400"
+    fill="#ffffff"
+    text-anchor="middle"
+    dominant-baseline="middle"
+  >Married in Newport</text>
+
+  <!-- Gold rule below wordmark -->
+  <rect x="480" y="398" width="240" height="1" fill="#c9a96e" opacity="0.6"/>
+
+  <!-- Tagline -->
+  <text
+    x="600"
+    y="434"
+    font-family="Georgia, 'Times New Roman', serif"
+    font-size="16"
+    font-weight="400"
+    fill="#ffffff"
+    text-anchor="middle"
+    dominant-baseline="middle"
+    opacity="0.5"
+  >Wedding Planning &amp; Venue Guidance</text>
+</svg>

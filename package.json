@@ -1,6 +1,6 @@
 {
   "name": "npt-weddings",
-  "version": "1.9.4",
+  "version": "1.9.6",
   "private": true,
   "scripts": {
     "dev": "next dev",
@@ -9,7 +9,8 @@
     "lint": "eslint",
     "test": "node --experimental-strip-types --experimental-specifier-resolution=node lib/structured-data.test.ts",
     "test:run": "node --experimental-strip-types --experimental-specifier-resolution=node lib/structured-data.test.ts",
-    "import:vendors": "node --experimental-strip-types --experimental-specifier-resolution=node scripts/import-vendors.ts"
+    "import:vendors": "node --experimental-strip-types --experimental-specifier-resolution=node scripts/import-vendors.ts",
+    "geocode:venues": "node --experimental-strip-types --experimental-specifier-resolution=node scripts/geocode-venues.ts"
   },
   "dependencies": {
     "@auth/core": "^0.41.2",

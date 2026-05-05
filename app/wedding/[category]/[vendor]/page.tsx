@@ -21,6 +21,8 @@ type Props = {
   params: Promise<{ category: string; vendor: string }>
 }
 
+const OG_FALLBACK = { url: "/og-default.svg", width: 1200, height: 630 }
+
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { category, vendor: vendorSlug } = await params
   const vendor = await getVendorByCategoryAndSlug(category, vendorSlug)
@@ -34,10 +36,23 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     (firstSentence
       ? `${vendor.name} — ${categoryLabel} serving Newport, Rhode Island. ${firstSentence}.`
       : `${vendor.name} is a ${categoryLabel} serving Newport, Rhode Island.`)
+
+  const photos = await getVendorPhotos(vendor.id).catch(() => [])
+  const primaryPhoto = photos.find((p) => p.is_primary) ?? photos[0] ?? null
+  const ogImage = primaryPhoto
+    ? { url: primaryPhoto.r2_url, width: 1200, height: 630 }
+    : OG_FALLBACK
+
   return {
     title,
     description,
     alternates: { canonical: `/wedding/${category}/${vendorSlug}` },
+    openGraph: {
+      images: [ogImage],
+    },
+    twitter: {
+      images: [ogImage.url],
+    },
   }
 }
 

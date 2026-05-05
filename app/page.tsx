@@ -1,5 +1,6 @@
 import type { Metadata } from "next"
 import Link from "next/link"
+import { ProseBody } from "@/components/prose-body"
 
 export const metadata: Metadata = {
   title: "Newport Wedding Planning",
@@ -90,6 +91,7 @@ export default function Home() {
         <div className="absolute inset-x-0 top-0 -z-10 h-[32rem] bg-[radial-gradient(circle_at_top_right,_rgba(201,169,110,0.22),_transparent_34%),radial-gradient(circle_at_left_center,_rgba(44,74,107,0.12),_transparent_36%)]" />
         <div className="mx-auto grid max-w-6xl gap-10 px-4 pb-18 pt-16 sm:px-6 lg:grid-cols-[1.1fr_0.9fr] lg:items-end lg:pb-24 lg:pt-24">
           <div className="max-w-3xl">
+            <ProseBody>Newport does something to a wedding that's hard to explain until you've seen it. The harbor light in late afternoon. The scale of the estates on Bellevue. The way the whole town already knows how to hold a celebration — has been doing it for a century and a half — so the backdrop doesn't feel rented or assembled. It feels earned. Couples who get married here don't just get a venue. They get a place with a personality, and that personality tends to make the whole weekend feel bigger than the sum of its parts.</ProseBody>
             <p className="font-sans text-[0.78rem] font-semibold uppercase tracking-[0.3em] text-[var(--color-gold-deep)]">
               Married in Newport
             </p>

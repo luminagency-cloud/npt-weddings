@@ -1,4 +1,5 @@
 import { Breadcrumbs, type BreadcrumbLink } from "@/components/breadcrumbs"
+import { ProseBody } from "@/components/prose-body"
 import Link from "next/link"
 import {
   buildArticleJsonLd,
@@ -26,6 +27,7 @@ type SeoGuidePageProps = {
   description: string
   decisionNotes?: Section[]
   eyebrow: string
+  heroParagraph?: string
   path: string
   title: string
   intro: string
@@ -40,6 +42,7 @@ export function SeoGuidePage({
   description,
   decisionNotes,
   eyebrow,
+  heroParagraph,
   path,
   title,
   intro,
@@ -66,6 +69,11 @@ export function SeoGuidePage({
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: serializeJsonLd(articleJsonLd) }}
       />
+      {heroParagraph && (
+        <div className="mb-10">
+          <ProseBody>{heroParagraph}</ProseBody>
+        </div>
+      )}
       <div className="grid gap-10 lg:grid-cols-[1.1fr_0.9fr] lg:items-start">
         <div className="max-w-3xl">
           <Breadcrumbs items={breadcrumbs} className="text-[var(--color-muted)]" />

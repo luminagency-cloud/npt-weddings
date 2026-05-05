@@ -1,5 +1,6 @@
 import type { Metadata } from "next"
 import Link from "next/link"
+import { ProseBody } from "@/components/prose-body"
 
 export const metadata: Metadata = {
   title: "About Married in Newport",
@@ -11,6 +12,7 @@ export const metadata: Metadata = {
 export default function AboutPage() {
   return (
     <div className="mx-auto max-w-4xl px-4 py-16 sm:px-6">
+      <ProseBody>Newport has been hosting weddings for a long time. The venues know what they're doing. The photographers know the light. The caterers have worked every room on Bellevue. What couples planning from out of town don't always have is a clear picture of how it all fits together — which venue actually matches their guest count, which season makes sense for what they want, what a realistic weekend looks like when you're asking people to travel to coastal Rhode Island for a celebration. That's the gap this site is trying to close. Not a marketplace, not a generic directory — something closer to a well-connected local friend who happens to know every venue in Newport County and will tell you the truth about all of them.</ProseBody>
       <p className="font-sans text-[0.72rem] font-semibold uppercase tracking-[0.24em] text-[var(--color-gold-deep)]">
         About
       </p>

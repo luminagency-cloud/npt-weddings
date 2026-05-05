@@ -10,7 +10,7 @@ export function Footer() {
               className="text-white text-lg font-semibold mb-2"
               style={{ fontFamily: "var(--font-playfair)" }}
             >
-              NPT Weddings
+              Married in Newport
             </h3>
             <p className="text-sm leading-relaxed">
               Newport County&rsquo;s guide to exceptional wedding vendors. Find the perfect team for your special day.
@@ -46,7 +46,7 @@ export function Footer() {
           </div>
         </div>
         <div className="mt-8 pt-6 text-xs text-white/30 text-center" style={{ borderTop: "1px solid rgba(255,255,255,0.08)" }}>
-          &copy; {new Date().getFullYear()} NPT Weddings &middot; Newport, Rhode Island
+          &copy; {new Date().getFullYear()} Married in Newport &middot; Newport, Rhode Island
         </div>
       </div>
     </footer>

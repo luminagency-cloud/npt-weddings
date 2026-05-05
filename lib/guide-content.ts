@@ -356,7 +356,7 @@ export const guidePages = {
     breadcrumbs: [
       { href: "/", label: "Home" },
       { href: "/planning", label: "Planning" },
-      { href: "/planning/venues", label: "Venues" },
+      { href: "/planning/venues", label: "Plan" },
       { label: "Luxury Venues" },
     ],
     path: "/planning/venues/luxury",
@@ -438,7 +438,7 @@ export const guidePages = {
     breadcrumbs: [
       { href: "/", label: "Home" },
       { href: "/planning", label: "Planning" },
-      { href: "/planning/venues", label: "Venues" },
+      { href: "/planning/venues", label: "Plan" },
       { label: "Waterfront Venues" },
     ],
     path: "/planning/venues/waterfront",
@@ -520,7 +520,7 @@ export const guidePages = {
     breadcrumbs: [
       { href: "/", label: "Home" },
       { href: "/planning", label: "Planning" },
-      { href: "/planning/venues", label: "Venues" },
+      { href: "/planning/venues", label: "Plan" },
       { label: "Small Wedding Venues" },
     ],
     path: "/planning/venues/small-weddings",

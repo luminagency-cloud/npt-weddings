@@ -20,7 +20,7 @@ export const metadata: Metadata = {
   metadataBase: new URL(siteConfig.siteUrl),
   title: {
     default: siteConfig.name,
-    template: `%s | Newport, RI | ${siteConfig.name}`,
+    template: `%s | Married in Newport`,
   },
   description: siteConfig.description,
   alternates: {
@@ -46,9 +46,8 @@ export const metadata: Metadata = {
 }
 
 const navItems = [
-  { href: "/", label: "Home" },
-  { href: "/planning/venues", label: "Venues" },
-  { href: "/wedding", label: "Vendors" },
+  { href: "/planning/venues", label: "Plan" },
+  { href: "/wedding", label: "Directory" },
   { href: "/planning", label: "Planning" },
   { href: "/newport-guide", label: "Newport Guide" },
   { href: "/about", label: "About" },

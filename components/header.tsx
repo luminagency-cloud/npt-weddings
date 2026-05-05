@@ -10,7 +10,7 @@ export function Header() {
               className="text-xl font-bold tracking-wide text-white group-hover:opacity-80 transition-opacity"
               style={{ fontFamily: "var(--font-playfair)" }}
             >
-              NPT Weddings
+              Married in Newport
             </span>
             <span
               className="tracking-widest uppercase"

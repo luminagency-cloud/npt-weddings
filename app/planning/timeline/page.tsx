@@ -1,14 +1,35 @@
 import type { Metadata } from "next"
-import { SeoGuidePage } from "@/components/seo-guide-page"
-import { guidePages } from "@/lib/guide-content"
+import TimelineArticle, {
+  breadcrumbs,
+  description,
+  eyebrow,
+  intro,
+  metadataTitle,
+  path,
+  relatedLinks,
+  title,
+} from "@/content/planning/timeline.mdx"
+import { MdxArticlePage } from "@/components/mdx-article-page"
 
 export const metadata: Metadata = {
-  title: guidePages.timeline.metadataTitle,
-  description: guidePages.timeline.description,
+  title: metadataTitle,
+  description,
   alternates: { canonical: "/planning/timeline" },
   openGraph: { type: "article" },
 }
 
 export default function TimelinePage() {
-  return <SeoGuidePage {...guidePages.timeline} />
+  return (
+    <MdxArticlePage
+      breadcrumbs={breadcrumbs}
+      description={description}
+      eyebrow={eyebrow}
+      intro={intro}
+      path={path}
+      relatedLinks={relatedLinks}
+      title={title}
+    >
+      <TimelineArticle />
+    </MdxArticlePage>
+  )
 }

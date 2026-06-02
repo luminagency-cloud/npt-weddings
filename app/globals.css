@@ -46,3 +46,112 @@ button {
   background: #d8bea0;
   color: var(--color-ink);
 }
+
+.article-mdx section + section {
+  margin-top: 3.5rem;
+}
+
+.article-mdx h2 {
+  font-family: var(--font-playfair), Georgia, serif;
+  font-size: clamp(1.55rem, 2vw, 2rem);
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  color: var(--color-ink);
+}
+
+.article-mdx h3 {
+  margin-top: 1.5rem;
+  font-size: 1.125rem;
+  font-weight: 600;
+  color: var(--color-ink);
+}
+
+.article-mdx p {
+  color: var(--color-muted);
+  font-size: 1rem;
+  line-height: 1.75rem;
+}
+
+.article-mdx p + p {
+  margin-top: 0.75rem;
+}
+
+.article-mdx ul,
+.article-mdx ol {
+  margin-top: 1rem;
+  padding-left: 1.25rem;
+  color: var(--color-muted);
+}
+
+.article-mdx li {
+  line-height: 1.65rem;
+}
+
+.article-mdx li + li {
+  margin-top: 0.5rem;
+}
+
+.article-mdx li::marker {
+  color: var(--color-gold-deep);
+}
+
+.article-mdx a {
+  color: var(--primary);
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 0.18em;
+}
+
+.article-mdx a:hover {
+  color: var(--color-gold-deep);
+}
+
+.article-section-label {
+  font-size: 0.68rem;
+  font-weight: 600;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: var(--color-gold-deep);
+}
+
+.article-card-grid {
+  display: grid;
+  gap: 1rem;
+  margin-top: 1.25rem;
+}
+
+@media (min-width: 640px) {
+  .article-card-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+.article-card {
+  border: 1px solid var(--color-line);
+  border-radius: 1.5rem;
+  background: var(--color-cream-strong);
+  padding: 1.25rem;
+}
+
+.article-card-title {
+  color: var(--color-ink);
+  font-weight: 600;
+}
+
+.article-card p + p {
+  margin-top: 0.5rem;
+}
+
+.article-highlight {
+  margin-top: 1.5rem;
+  border: 1px solid var(--color-line);
+  border-radius: 1.75rem;
+  background: var(--color-cream-strong);
+  padding: 1.5rem;
+}
+
+.article-highlight-title {
+  color: var(--color-ink);
+  font-size: 0.95rem;
+  font-weight: 600;
+}

@@ -1,6 +1,6 @@
 {
   "name": "npt-weddings",
-  "version": "3.6.1",
+  "version": "3.6.2",
   "private": true,
   "status": "refactor contend to MDX",
   "scripts": {

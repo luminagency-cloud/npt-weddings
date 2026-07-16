@@ -22,7 +22,8 @@ sellable.
 
 - Grow SEO / content (planning + Newport guides already do this well).
 - Instrument lead tracking: capture and attribute vendor profile views, clicks,
-  and contact / lead events. This is the sales proof for Phase 3.
+  and contact / lead events. This is the sales proof for Phase 3. Spec:
+  [LEAD-TRACKING.md](./LEAD-TRACKING.md).
 - Optional demand lever: the planning app (see [APP-FUNNEL.md](./APP-FUNNEL.md))
   can start here as a cheap, genuinely-AI couple tool that feeds traffic - only
   if it does not slow Phase 1 or 2.
@@ -36,9 +37,10 @@ Goal: recurring vendor revenue in the first market.
 
 - Ship the minimum paid mechanics: featured / priority placement, enhanced
   profile. Stripe plus a lean self-serve or manual billing flow. (Env vars
-  already reserved.)
+  already reserved.) Spec: [BILLING.md](./BILLING.md).
 - Sell against The Knot: direct leads, local curation, no 12-month lock, priced
-  as an obvious yes. Pricing in [STRATEGY.md](./STRATEGY.md).
+  as an obvious yes. Pricing in [STRATEGY.md](./STRATEGY.md); pitch in
+  [FOR-VENDORS.md](./FOR-VENDORS.md).
 - Convert claimed listings to featured. Keep basic listings free for inventory
   and SEO.
 

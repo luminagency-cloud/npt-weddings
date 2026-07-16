@@ -11,6 +11,7 @@ export const siteConfig = {
 export const staticRoutes = [
   "/",
   "/about",
+  "/for-vendors",
   "/planning",
   "/planning/budget-guide",
   "/planning/choose-a-venue",

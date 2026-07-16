@@ -60,7 +60,7 @@ For MVP, choose one of these and stick to it:
 
 - Check every launch category page for unique intro quality.
 - Tighten weak AI-assisted vendor descriptions by hand.
-- Make sure featured listings visibly earn the distinction.
+- featured listings should feel visibly better than basic listings
 - Remove empty or low-signal categories from the public path.
 
 ### 5. Review public claim messaging

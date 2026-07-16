@@ -1,20 +1,20 @@
-import type { Metadata } from "next"
-import { Geist, Playfair_Display } from "next/font/google"
-import Link from "next/link"
-import Script from "next/script"
-import { siteConfig } from "@/lib/site"
-import "./globals.css"
+import type { Metadata } from "next";
+import { Geist, Playfair_Display } from "next/font/google";
+import Link from "next/link";
+import Script from "next/script";
+import { siteConfig } from "@/lib/site";
+import "./globals.css";
 
 const geist = Geist({
   variable: "--font-geist-sans",
   subsets: ["latin"],
-})
+});
 
 const playfair = Playfair_Display({
   variable: "--font-playfair",
   subsets: ["latin"],
   display: "swap",
-})
+});
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteConfig.siteUrl),
@@ -52,7 +52,7 @@ export const metadata: Metadata = {
   verification: siteConfig.googleVerification
     ? { google: siteConfig.googleVerification }
     : undefined,
-}
+};
 
 const navItems = [
   { href: "/planning/venues", label: "Plan" },
@@ -60,12 +60,12 @@ const navItems = [
   { href: "/planning", label: "Planning" },
   { href: "/newport-guide", label: "Newport Guide" },
   { href: "/about", label: "About" },
-]
+];
 
 export default function RootLayout({
   children,
 }: {
-  children: React.ReactNode
+  children: React.ReactNode;
 }) {
   const organizationJsonLd = {
     "@context": "https://schema.org",
@@ -73,7 +73,7 @@ export default function RootLayout({
     name: siteConfig.name,
     url: siteConfig.siteUrl,
     description: siteConfig.description,
-  }
+  };
 
   const websiteJsonLd = {
     "@context": "https://schema.org",
@@ -86,11 +86,17 @@ export default function RootLayout({
       target: `${siteConfig.siteUrl}/wedding?q={search_term_string}`,
       "query-input": "required name=search_term_string",
     },
-  }
+  };
 
   return (
-    <html lang="en" className={`${geist.variable} ${playfair.variable} h-full antialiased`}>
-      <body className="min-h-full" style={{ background: "var(--background)", color: "var(--foreground)" }}>
+    <html
+      lang="en"
+      className={`${geist.variable} ${playfair.variable} h-full antialiased`}
+    >
+      <body
+        className="min-h-full"
+        style={{ background: "var(--background)", color: "var(--foreground)" }}
+      >
         {siteConfig.gaMeasurementId && (
           <>
             <Script
@@ -111,7 +117,9 @@ export default function RootLayout({
           id="organization-jsonld"
           type="application/ld+json"
           strategy="afterInteractive"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationJsonLd) }}
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify(organizationJsonLd),
+          }}
         />
         <Script
           id="website-jsonld"
@@ -130,7 +138,10 @@ export default function RootLayout({
                   <span className="block text-[0.68rem] font-semibold uppercase tracking-[0.28em] text-[var(--gold)]">
                     Married in
                   </span>
-                  <span className="block text-lg font-semibold" style={{ fontFamily: "var(--font-playfair)" }}>
+                  <span
+                    className="block text-lg font-semibold"
+                    style={{ fontFamily: "var(--font-playfair)" }}
+                  >
                     Newport
                   </span>
                 </span>
@@ -190,11 +201,17 @@ export default function RootLayout({
                     {item.label}
                   </Link>
                 ))}
+                <Link
+                  href="/for-vendors"
+                  className="transition-colors hover:text-white"
+                >
+                  For Vendors
+                </Link>
               </div>
             </div>
           </footer>
         </div>
       </body>
     </html>
-  )
+  );
 }

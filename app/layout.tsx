@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Geist, Playfair_Display } from "next/font/google";
 import Link from "next/link";
 import Script from "next/script";
+import { Analytics } from "@vercel/analytics/next";
 import { siteConfig } from "@/lib/site";
 import "./globals.css";
 import styles from "./layout.module.css";
@@ -179,6 +180,7 @@ export default function RootLayout({
             </div>
           </footer>
         </div>
+        <Analytics />
       </body>
     </html>
   );
